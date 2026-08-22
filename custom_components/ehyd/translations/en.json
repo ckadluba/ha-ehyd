@@ -1,0 +1,9 @@
+{
+    "entity": {
+        "sensor": {
+            "ehyd_pegel_schwechat_hallenbad": {
+                "name": "Watermark Schwechat (Hallenbad)"
+            }
+        }
+    }
+}

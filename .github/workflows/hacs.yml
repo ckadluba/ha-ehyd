@@ -1,0 +1,19 @@
+name: Validate with HACS
+
+on:
+  pull_request:
+    branches: [ dev, main ]
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  hacs:
+    name: HACS Action
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@v2"
+      - name: HACS Action
+        uses: "hacs/action@main"
+        with:
+          category: "integration"

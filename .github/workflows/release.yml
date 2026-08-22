@@ -1,0 +1,83 @@
+name: Release
+
+on:
+  push:
+    branches: [ dev, main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release_zip_file:
+    name: Create release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history to ensure we can check for existing tags/releases
+
+      - name: Generate the version number
+        id: version
+        run: |
+          VERSION=$(jq -r '.version' custom_components/ehyd/manifest.json)
+          if [ "${GITHUB_REF_NAME}" = "dev" ]; then
+            VERSION="${VERSION}-dev${GITHUB_RUN_NUMBER}"
+          fi
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+
+      - name: Check version is not already released
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION="v${{ steps.version.outputs.version }}"
+          # Check for existing tag
+          if git ls-remote --exit-code --tags origin "refs/tags/${VERSION}" > /dev/null 2>&1; then
+            echo "::error::Tag ${VERSION} already exists. Bump the version in manifest.json before releasing."
+            exit 1
+          fi
+          # Check for existing release (including drafts)
+          if gh release view "${VERSION}" > /dev/null 2>&1; then
+            echo "::error::Release ${VERSION} already exists. Bump the version in manifest.json before releasing."
+            exit 1
+          fi
+
+      - name: Generate changelog
+        id: changelog
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Ensure tags are available
+          git fetch --tags --force
+
+          # Find the tag of the latest published release (ignore drafts)
+          LAST_TAG=$(gh release list --exclude-drafts --limit 1 --json tagName --jq '.[0].tagName' 2>/dev/null || true)
+          if [ -n "$LAST_TAG" ]; then
+            COMMITS=$(git log "${LAST_TAG}..HEAD" --pretty=format:"- %s (%h)" --no-merges)
+          else
+            COMMITS=$(git log --pretty=format:"- %s (%h)" --no-merges)
+          fi
+          # Write to a temp file to preserve newlines
+          echo "$COMMITS" > /tmp/changelog.txt
+          echo "file=/tmp/changelog.txt" >> $GITHUB_OUTPUT
+
+      - name: ZIP ehyd dir
+        run: |
+          cd ${{ github.workspace }}/custom_components/ehyd
+          zip ehyd.zip -r ./
+
+      - name: Create release
+        if: github.ref_name == 'dev' || github.ref_name == 'main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: v${{ steps.version.outputs.version }}
+          body_path: ${{ steps.changelog.outputs.file }}
+          prerelease: ${{ github.ref_name == 'dev' }}
+
+      - name: Upload zip to release
+        if: github.ref_name == 'dev' || github.ref_name == 'main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          files: ${{ github.workspace }}/custom_components/ehyd/ehyd.zip
