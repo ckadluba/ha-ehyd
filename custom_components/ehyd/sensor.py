@@ -22,6 +22,8 @@ from custom_components.ehyd.const import (
     ICON_RIVER_SENSOR,
     INTEGRATION_DEVICE_MANUFACTURER,
     INTEGRATION_NAME,
+    RIVER_STATION_NAMETAG,
+    RIVER_STATION_UNIT_OF_MEASUREMENT,
     RIVER_STATIONS,
 )
 
@@ -54,16 +56,17 @@ async def async_setup_entry(
 
 class CoordinatorSensor(CoordinatorEntity, SensorEntity):
     """
-    Coordinator-backed sensor base class for contamination data.
+    Coordinator-backed sensor base class for hydrological data.
 
-    1. Builds the sensor name and unique ID based on the provided name suffix.
-    2. Uses the passed DataExtractor to extract the relevant contamination data from
+    1. Builds the sensor name and unique ID based on the provided station name suffix.
+    2. Uses the passed DataExtractor to extract the relevant hydrological data from
        coordinator's response and exposes the values as properties.
 
     param coordinator: The data update coordinator for this integration.
     param data_extractor: An instance of a DataExtractor subclass to extract the
-        relevant contamination data from the coordinator's response.
-    param name_suffix: The suffix for the sensor name (e.g., "schwechat_hallenbad").
+        relevant hydrological data from the coordinator's response.
+    param sensor_name_suffix: The suffix for the sensor name (e.g.,
+        "schwechat_hallenbad").
     param icon: The icon for the sensor entity (default is ICON_RIVER_SENSOR)
     """
 
@@ -85,7 +88,7 @@ class CoordinatorSensor(CoordinatorEntity, SensorEntity):
         self._attr_unique_id = canonical_entity_name
         self._attr_icon = icon
         self._attr_state_class = SensorStateClass.MEASUREMENT
-        self._attr_native_unit_of_measurement = "m³/s"
+        self._attr_native_unit_of_measurement = RIVER_STATION_UNIT_OF_MEASUREMENT
 
         # Ensure canonical entity_id independent of friendly name
         self.entity_id = f"sensor.{canonical_entity_name}"
@@ -94,7 +97,7 @@ class CoordinatorSensor(CoordinatorEntity, SensorEntity):
             key=canonical_entity_name,
             translation_key=canonical_entity_name,
             icon=ICON_RIVER_SENSOR,
-            native_unit_of_measurement="m³/s",
+            native_unit_of_measurement=RIVER_STATION_UNIT_OF_MEASUREMENT,
             state_class=SensorStateClass.MEASUREMENT,
         )
 
@@ -113,7 +116,7 @@ class CoordinatorSensor(CoordinatorEntity, SensorEntity):
 
     @property
     def native_value(self) -> float | None:
-        """Return the current contamination level."""
+        """Return the current water level."""
         return self.data_extractor.get_native_value()
 
     @property
@@ -123,7 +126,7 @@ class CoordinatorSensor(CoordinatorEntity, SensorEntity):
 
 
 class DataExtractor:
-    """Mixin base class to extract contamination data from the coordinator response."""
+    """Mixin base class to extract hydrological data from the coordinator response."""
 
     def __init__(self, coordinator) -> None:  # noqa: ANN001
         """Initialize the data extractor."""
@@ -131,7 +134,7 @@ class DataExtractor:
 
     @abstractmethod
     def get_native_value(self) -> float | None:
-        """Return the current contamination level for the given element name."""
+        """Return the current water level for the given element name."""
 
     @abstractmethod
     def get_extra_state_attributes(self) -> dict:
@@ -191,19 +194,19 @@ class RiverStationDataExtractor(DataExtractor):
 
 class RiverStationSensor(CoordinatorSensor):
     """
-    Sensor for the current contamination level for one specific river station.
+    Sensor for the current water level for one specific river station.
 
     param coordinator: The data update coordinator for this integration.
-    param name_suffix: The suffix for the station (e.g., "schwechat_hallenbad").
+    param station_name_suffix: The suffix for the station (e.g., "schwechat_hallenbad").
     param hzbnr: The numeric ID for the river station according to the API response.
     """
 
-    def __init__(self, coordinator, name_suffix: str, hzbnr: int) -> None:  # noqa: ANN001
+    def __init__(self, coordinator, station_name_suffix: str, hzbnr: int) -> None:  # noqa: ANN001
         """Initialize the sensor entity."""
         super().__init__(
             coordinator,
             RiverStationDataExtractor(coordinator, hzbnr),
-            f"pegel_{name_suffix}",
+            f"{RIVER_STATION_NAMETAG}_{station_name_suffix}",
         )
 
         self.hzbnr = hzbnr
@@ -211,9 +214,9 @@ class RiverStationSensor(CoordinatorSensor):
         _LOGGER.debug(
             (
                 "RiverStationSensor initialized with _attr_unique_id: %s, "
-                "station_id_suffix: %s, hzbnr: %s"
+                "station_name_suffix: %s, hzbnr: %s"
             ),
             self._attr_unique_id,
-            name_suffix,
+            station_name_suffix,
             hzbnr,
         )

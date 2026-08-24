@@ -5,7 +5,12 @@ INTEGRATION_NAME = "eHYD"
 INTEGRATION_DEVICE_MANUFACTURER = "Christian Kadluba (data provided by ehyd.gv.at)"
 PLATFORMS = ["sensor"]
 
-RIVER_STATIONS = [{"suffix": "schwechat_hallenbad", "hzbnr": 208157}]
+RIVER_STATIONS = [
+    {"suffix": "schwechat_hallenbad", "hzbnr": 208157},
+    {"suffix": "korneuburg", "hzbnr": 207241},
+]
+RIVER_STATION_NAMETAG = "discharge"
+RIVER_STATION_UNIT_OF_MEASUREMENT = "m³/s"
 
 DEFAULT_INTERVAL = 1  # hours, fixed polling interval
 

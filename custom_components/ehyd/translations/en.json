@@ -1,8 +1,11 @@
 {
     "entity": {
         "sensor": {
-            "ehyd_pegel_schwechat_hallenbad": {
-                "name": "Watermark Schwechat (Hallenbad)"
+            "ehyd_discharge_schwechat_hallenbad": {
+                "name": "Discharge Schwechat Hallenbad"
+            },
+            "ehyd_discharge_korneuburg": {
+                "name": "Discharge Donau Korneuburg"
             }
         }
     }
