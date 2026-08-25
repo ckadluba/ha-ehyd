@@ -6,6 +6,9 @@
             },
             "ehyd_discharge_korneuburg": {
                 "name": "Abfluss Donau Korneuburg"
+            },
+            "ehyd_discharge_fischering": {
+                "name": "Abfluss Lavant Fischering"
             }
         }
     }
