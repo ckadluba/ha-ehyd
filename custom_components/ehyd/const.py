@@ -15,6 +15,6 @@ RIVER_STATION_UNIT_OF_MEASUREMENT = "m³/s"
 
 DEFAULT_INTERVAL = 1  # hours, fixed polling interval
 
-CONF_SENSOR_PREFIX = "sensor_"
+CONF_SELECTED_STATIONS = "selected_stations"
 
 ICON_RIVER_SENSOR = "mdi:waves-arrow-up"

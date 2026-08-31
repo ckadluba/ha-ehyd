@@ -18,7 +18,7 @@ from homeassistant.helpers.device_registry import DeviceEntryType, DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from custom_components.ehyd.const import (
-    CONF_SENSOR_PREFIX,
+    CONF_SELECTED_STATIONS,
     DOMAIN,
     ICON_RIVER_SENSOR,
     INTEGRATION_DEVICE_MANUFACTURER,
@@ -42,13 +42,15 @@ def get_enabled_station_configs(
     """Return the configured river stations that are enabled."""
     entry_data = getattr(config_entry, "data", {})
     entry_options = getattr(config_entry, "options", {})
-    merged_data = {**entry_data, **entry_options}
+    selected = entry_options.get(
+        CONF_SELECTED_STATIONS,
+        entry_data.get(CONF_SELECTED_STATIONS, []),
+    )
 
-    return [
-        station
-        for station in RIVER_STATIONS
-        if merged_data.get(f"{CONF_SENSOR_PREFIX}{station['suffix']}", True)
-    ]
+    if not isinstance(selected, list):
+        return []
+
+    return [station for station in RIVER_STATIONS if station["suffix"] in selected]
 
 
 async def async_setup_entry(
@@ -98,7 +100,7 @@ class CoordinatorSensor(CoordinatorEntity, SensorEntity):
         self.data_extractor = data_extractor
         self.name_suffix = name_suffix
 
-        canonical_entity_name = f"{DOMAIN}_{name_suffix}"
+        canonical_entity_name = f"{DOMAIN}_{name_suffix}_{RIVER_STATION_NAMETAG}"
         self._attr_has_entity_name = True
         self._attr_unique_id = canonical_entity_name
         self._attr_icon = icon
@@ -116,12 +118,15 @@ class CoordinatorSensor(CoordinatorEntity, SensorEntity):
             state_class=SensorStateClass.MEASUREMENT,
         )
 
+        display_name = name_suffix.replace("_", " ").title()
         self._attr_device_info = DeviceInfo(
-            identifiers={(DOMAIN, "ehyd")},
-            name=INTEGRATION_NAME,
+            identifiers={(DOMAIN, name_suffix)},
+            name=display_name,
             manufacturer=INTEGRATION_DEVICE_MANUFACTURER,
             entry_type=DeviceEntryType.SERVICE,
         )
+
+        self._attr_name = f"{display_name} {RIVER_STATION_NAMETAG.title()}"
 
         _LOGGER.debug(
             ("CoordinatorSensor initialized with _attr_unique_id: %s, name_suffix: %s"),
@@ -221,7 +226,7 @@ class RiverStationSensor(CoordinatorSensor):
         super().__init__(
             coordinator,
             RiverStationDataExtractor(coordinator, hzbnr),
-            f"{RIVER_STATION_NAMETAG}_{station_name_suffix}",
+            station_name_suffix,
         )
 
         self.hzbnr = hzbnr
