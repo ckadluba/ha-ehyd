@@ -1,13 +1,13 @@
 {
     "entity": {
         "sensor": {
-            "ehyd_discharge_schwechat_hallenbad": {
+            "ehyd_schwechat_hallenbad_discharge": {
                 "name": "Discharge Schwechat Hallenbad"
             },
-            "ehyd_discharge_korneuburg": {
+            "ehyd_korneuburg_discharge": {
                 "name": "Discharge Donau Korneuburg"
             },
-            "ehyd_discharge_fischering": {
+            "ehyd_fischering_discharge": {
                 "name": "Discharge Lavant Fischering"
             }
         }
