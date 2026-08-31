@@ -5,9 +5,10 @@ from homeassistant import config_entries
 from homeassistant.core import callback
 
 from .const import (
-    CONF_API_KEY,
+    CONF_SENSOR_PREFIX,
     DOMAIN,
     INTEGRATION_NAME,
+    RIVER_STATIONS,
 )
 
 
@@ -31,7 +32,18 @@ class EhydConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             return self.async_create_entry(title=INTEGRATION_NAME, data=user_input)
 
         return self.async_show_form(
-            step_id="user", data_schema=vol.Schema({vol.Required(CONF_API_KEY): str})
+            step_id="user",
+            data_schema=vol.Schema(
+                {
+                    **{
+                        vol.Optional(
+                            f"{CONF_SENSOR_PREFIX}{station['suffix']}",
+                            default=True,
+                        ): bool
+                        for station in RIVER_STATIONS
+                    },
+                }
+            ),
         )
 
 
@@ -47,17 +59,26 @@ class EhydOptionsFlowHandler(config_entries.OptionsFlow):
         if user_input is not None:
             return self.async_create_entry(title=INTEGRATION_NAME, data=user_input)
 
+        default_options = self.config_entry.options
+        data_options = self.config_entry.data
+
         return self.async_show_form(
             step_id="init",
             data_schema=vol.Schema(
                 {
-                    vol.Required(
-                        CONF_API_KEY,
-                        default=self.config_entry.options.get(
-                            CONF_API_KEY,
-                            self.config_entry.data.get(CONF_API_KEY, ""),
-                        ),
-                    ): str
+                    **{
+                        vol.Optional(
+                            f"{CONF_SENSOR_PREFIX}{station['suffix']}",
+                            default=default_options.get(
+                                f"{CONF_SENSOR_PREFIX}{station['suffix']}",
+                                data_options.get(
+                                    f"{CONF_SENSOR_PREFIX}{station['suffix']}",
+                                    True,
+                                ),
+                            ),
+                        ): bool
+                        for station in RIVER_STATIONS
+                    },
                 }
             ),
         )

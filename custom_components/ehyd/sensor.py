@@ -18,6 +18,7 @@ from homeassistant.helpers.device_registry import DeviceEntryType, DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from custom_components.ehyd.const import (
+    CONF_SENSOR_PREFIX,
     DOMAIN,
     ICON_RIVER_SENSOR,
     INTEGRATION_DEVICE_MANUFACTURER,
@@ -35,6 +36,21 @@ if TYPE_CHECKING:
 _LOGGER = logging.getLogger(__name__)
 
 
+def get_enabled_station_configs(
+    config_entry: ConfigEntry,
+) -> list[dict[str, int | str]]:
+    """Return the configured river stations that are enabled."""
+    entry_data = getattr(config_entry, "data", {})
+    entry_options = getattr(config_entry, "options", {})
+    merged_data = {**entry_data, **entry_options}
+
+    return [
+        station
+        for station in RIVER_STATIONS
+        if merged_data.get(f"{CONF_SENSOR_PREFIX}{station['suffix']}", True)
+    ]
+
+
 async def async_setup_entry(
     hass: HomeAssistant,
     config_entry: ConfigEntry,
@@ -43,10 +59,9 @@ async def async_setup_entry(
     """Set up eHYD sensors for a config entry."""
     coordinator = hass.data[DOMAIN][config_entry.entry_id]
 
-    # Setup river water level sensors for each station defined in RIVER_STATIONS
     sensors: list[CoordinatorSensor] = [
         RiverStationSensor(coordinator, item["suffix"], item["hzbnr"])
-        for item in RIVER_STATIONS
+        for item in get_enabled_station_configs(config_entry)
     ]
 
     _LOGGER.debug("Setting up sensor entities: %s", sensors)
