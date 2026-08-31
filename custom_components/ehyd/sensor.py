@@ -22,7 +22,6 @@ from custom_components.ehyd.const import (
     DOMAIN,
     ICON_RIVER_SENSOR,
     INTEGRATION_DEVICE_MANUFACTURER,
-    INTEGRATION_NAME,
     RIVER_STATION_NAMETAG,
     RIVER_STATION_UNIT_OF_MEASUREMENT,
     RIVER_STATIONS,
@@ -61,8 +60,8 @@ async def async_setup_entry(
     """Set up eHYD sensors for a config entry."""
     coordinator = hass.data[DOMAIN][config_entry.entry_id]
 
-    sensors: list[CoordinatorSensor] = [
-        RiverStationSensor(coordinator, item["suffix"], item["hzbnr"])
+    sensors: list[RiverStationSensor] = [
+        RiverStationSensor(coordinator, str(item["suffix"]), int(item["hzbnr"]))
         for item in get_enabled_station_configs(config_entry)
     ]
 

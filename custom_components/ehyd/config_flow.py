@@ -8,7 +8,9 @@ from homeassistant.helpers import selector
 from .const import CONF_SELECTED_STATIONS, DOMAIN, INTEGRATION_NAME, RIVER_STATIONS
 
 
-def station_is_configured(entries, station_suffix: str) -> bool:
+def station_is_configured(
+    entries: list[config_entries.ConfigEntry], station_suffix: str
+) -> bool:
     """Return whether a station is already configured in any existing entry."""
     normalized_station = station_suffix.replace("_", " ").title()
 
@@ -56,7 +58,7 @@ class EhydConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             if station_is_configured(self._async_current_entries(), station_suffix):
                 return self.async_abort(reason="already_configured")
 
-            self.async_set_unique_id(station_suffix)
+            await self.async_set_unique_id(station_suffix)
             self._abort_if_unique_id_configured()
 
             station = next(
@@ -92,8 +94,8 @@ class EhydConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                                 {
                                     "value": station["suffix"],
                                     "label": (
-                                        f"{station['suffix'].replace('_', ' ').title()} "
-                                        f"({station['hzbnr']})"
+                                        f"{station['suffix'].replace('_', ' ').title()}"
+                                        f" ({station['hzbnr']})"
                                     ),
                                 }
                                 for station in available_stations
@@ -169,8 +171,8 @@ class EhydOptionsFlowHandler(config_entries.OptionsFlow):
                                 {
                                     "value": station["suffix"],
                                     "label": (
-                                        f"{station['suffix'].replace('_', ' ').title()} "
-                                        f"({station['hzbnr']})"
+                                        f"{station['suffix'].replace('_', ' ').title()}"
+                                        f" ({station['hzbnr']})"
                                     ),
                                 }
                                 for station in available
