@@ -70,7 +70,7 @@ async def async_setup_entry(
     async_add_entities(sensors)
 
 
-class CoordinatorSensor(CoordinatorEntity, SensorEntity):
+class StationSensor(CoordinatorEntity, SensorEntity):
     """
     Coordinator-backed sensor base class for hydrological data.
 
@@ -81,8 +81,7 @@ class CoordinatorSensor(CoordinatorEntity, SensorEntity):
     param coordinator: The data update coordinator for this integration.
     param data_extractor: An instance of a DataExtractor subclass to extract the
         relevant hydrological data from the coordinator's response.
-    param sensor_name_suffix: The suffix for the sensor name (e.g.,
-        "schwechat_hallenbad").
+    param station_name: The name of the station (e.g., "schwechat_hallenbad").
     param icon: The icon for the sensor entity (default is ICON_RIVER_SENSOR)
     """
 
@@ -90,16 +89,19 @@ class CoordinatorSensor(CoordinatorEntity, SensorEntity):
         self,
         coordinator,  # noqa: ANN001
         data_extractor: DataExtractor,
-        name_suffix: str,
+        station_name: str,
         icon: str = ICON_RIVER_SENSOR,
     ) -> None:
         """Initialize the sensor entity."""
         super().__init__(coordinator)
 
         self.data_extractor = data_extractor
-        self.name_suffix = name_suffix
+        self.name_suffix = station_name
 
-        canonical_entity_name = f"{DOMAIN}_{name_suffix}_{RIVER_STATION_NAMETAG}"
+        # We use the domain as part of every entity allthough it is not
+        # HA recommended style. The domain is short and this ensures
+        # that the entity_id is unique and descriptive.
+        canonical_entity_name = f"{DOMAIN}_{station_name}_{RIVER_STATION_NAMETAG}"
         self._attr_has_entity_name = True
         self._attr_unique_id = canonical_entity_name
         self._attr_icon = icon
@@ -117,9 +119,9 @@ class CoordinatorSensor(CoordinatorEntity, SensorEntity):
             state_class=SensorStateClass.MEASUREMENT,
         )
 
-        display_name = name_suffix.replace("_", " ").title()
+        display_name = station_name.replace("_", " ").title()
         self._attr_device_info = DeviceInfo(
-            identifiers={(DOMAIN, name_suffix)},
+            identifiers={(DOMAIN, station_name)},
             name=display_name,
             manufacturer=INTEGRATION_DEVICE_MANUFACTURER,
             entry_type=DeviceEntryType.SERVICE,
@@ -128,7 +130,7 @@ class CoordinatorSensor(CoordinatorEntity, SensorEntity):
         self._attr_name = f"{display_name} {RIVER_STATION_NAMETAG.title()}"
 
         _LOGGER.debug(
-            ("CoordinatorSensor initialized with _attr_unique_id: %s, name_suffix: %s"),
+            ("StationSensor initialized with _attr_unique_id: %s, station_name: %s"),
             self._attr_unique_id,
             self.name_suffix,
         )
@@ -211,21 +213,21 @@ class RiverStationDataExtractor(DataExtractor):
         return None
 
 
-class RiverStationSensor(CoordinatorSensor):
+class RiverStationSensor(StationSensor):
     """
     Sensor for the current water level for one specific river station.
 
     param coordinator: The data update coordinator for this integration.
-    param station_name_suffix: The suffix for the station (e.g., "schwechat_hallenbad").
+    param station_name: The name of the station (e.g., "schwechat_hallenbad").
     param hzbnr: The numeric ID for the river station according to the API response.
     """
 
-    def __init__(self, coordinator, station_name_suffix: str, hzbnr: int) -> None:  # noqa: ANN001
+    def __init__(self, coordinator, station_name: str, hzbnr: int) -> None:  # noqa: ANN001
         """Initialize the sensor entity."""
         super().__init__(
             coordinator,
             RiverStationDataExtractor(coordinator, hzbnr),
-            station_name_suffix,
+            station_name,
         )
 
         self.hzbnr = hzbnr
@@ -233,9 +235,9 @@ class RiverStationSensor(CoordinatorSensor):
         _LOGGER.debug(
             (
                 "RiverStationSensor initialized with _attr_unique_id: %s, "
-                "station_name_suffix: %s, hzbnr: %s"
+                "station_name: %s, hzbnr: %s"
             ),
             self._attr_unique_id,
-            station_name_suffix,
+            station_name,
             hzbnr,
         )
