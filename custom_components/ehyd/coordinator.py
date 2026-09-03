@@ -7,7 +7,13 @@ from typing import TYPE_CHECKING
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
 from .api import EhydApi
-from .const import DEFAULT_INTERVAL, DOMAIN
+from .const import (
+    CONF_SELECTED_STATIONS,
+    DEFAULT_INTERVAL,
+    DOMAIN,
+    GROUNDWATER_STATIONS,
+    RIVER_STATIONS,
+)
 
 if TYPE_CHECKING:
     from homeassistant.config_entries import ConfigEntry
@@ -32,11 +38,27 @@ class EhydDataUpdateCoordinator(DataUpdateCoordinator):
     async def _async_update_data(self) -> dict:
         """Fetch data from the upstream API."""
         api = EhydApi(self.hass)
+        selected = self._get_selected_stations()
+        fetch_river = any(station["suffix"] in selected for station in RIVER_STATIONS)
+        fetch_groundwater = any(
+            station["suffix"] in selected for station in GROUNDWATER_STATIONS
+        )
 
         try:
-            await api.async_update()
+            await api.async_update(
+                fetch_river=fetch_river,
+                fetch_groundwater=fetch_groundwater,
+            )
         except Exception as err:
             msg = f"Error fetching eHYD data: {err}"
             raise UpdateFailed(msg) from err
 
         return api.raw_response or {}
+
+    def _get_selected_stations(self) -> list[str]:
+        """Return the selected stations from the config entry."""
+        selected = self.config_entry.options.get(
+            CONF_SELECTED_STATIONS,
+            self.config_entry.data.get(CONF_SELECTED_STATIONS, []),
+        )
+        return selected if isinstance(selected, list) else []
