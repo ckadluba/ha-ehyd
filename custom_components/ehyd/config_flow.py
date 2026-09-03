@@ -5,7 +5,22 @@ from homeassistant import config_entries
 from homeassistant.core import callback
 from homeassistant.helpers import selector
 
-from .const import CONF_SELECTED_STATIONS, DOMAIN, INTEGRATION_NAME, RIVER_STATIONS
+from .const import (
+    CONF_SELECTED_STATIONS,
+    DOMAIN,
+    GROUNDWATER_STATIONS,
+    INTEGRATION_NAME,
+    RIVER_STATIONS,
+)
+
+ALL_STATIONS = [*RIVER_STATIONS, *GROUNDWATER_STATIONS]
+
+
+def station_label(station: dict[str, int | str]) -> str:
+    """Return the labeled station name for a station selector."""
+    station_type = "Groundwater" if station in GROUNDWATER_STATIONS else "River"
+    name = str(station["suffix"]).replace("_", " ").title()
+    return f"{station_type}: {name} ({station['hzbnr']})"
 
 
 def station_is_configured(
@@ -62,7 +77,7 @@ class EhydConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             self._abort_if_unique_id_configured()
 
             station = next(
-                item for item in RIVER_STATIONS if item["suffix"] == station_suffix
+                item for item in ALL_STATIONS if item["suffix"] == station_suffix
             )
             title = station["suffix"].replace("_", " ").title()
             return self.async_create_entry(
@@ -80,7 +95,7 @@ class EhydConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         }
         available_stations = [
             station
-            for station in RIVER_STATIONS
+            for station in ALL_STATIONS
             if station["suffix"] not in existing_station_suffixes
         ]
 
@@ -93,10 +108,7 @@ class EhydConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                             options=[
                                 {
                                     "value": station["suffix"],
-                                    "label": (
-                                        f"{station['suffix'].replace('_', ' ').title()}"
-                                        f" ({station['hzbnr']})"
-                                    ),
+                                    "label": station_label(station),
                                 }
                                 for station in available_stations
                             ],
@@ -147,7 +159,7 @@ class EhydOptionsFlowHandler(config_entries.OptionsFlow):
         """Choose a river station to add as a service/device."""
         selected = self._get_selected_stations()
         available = [
-            station for station in RIVER_STATIONS if station["suffix"] not in selected
+            station for station in ALL_STATIONS if station["suffix"] not in selected
         ]
 
         if user_input is not None:
@@ -170,10 +182,7 @@ class EhydOptionsFlowHandler(config_entries.OptionsFlow):
                             options=[
                                 {
                                     "value": station["suffix"],
-                                    "label": (
-                                        f"{station['suffix'].replace('_', ' ').title()}"
-                                        f" ({station['hzbnr']})"
-                                    ),
+                                    "label": station_label(station),
                                 }
                                 for station in available
                             ],

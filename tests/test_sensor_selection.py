@@ -4,9 +4,12 @@ from types import SimpleNamespace
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from custom_components.ehyd.config_flow import station_is_configured
+from custom_components.ehyd.config_flow import station_is_configured, station_label
+from custom_components.ehyd.const import GROUNDWATER_STATIONS, RIVER_STATIONS
 from custom_components.ehyd.const import DOMAIN
 from custom_components.ehyd.sensor import (
+    GroundwaterSensor,
+    GroundwaterStationDataExtractor,
     RiverStationDataExtractor,
     RiverStationSensor,
     StationSensor,
@@ -29,6 +32,13 @@ def test_station_is_configured_detects_existing_station() -> None:
 
     assert station_is_configured(entries, "korneuburg") is True
     assert station_is_configured(entries, "schwechat_hallenbad") is False
+
+
+def test_station_labels_identify_station_type() -> None:
+    assert station_label(RIVER_STATIONS[0]) == ("River: Schwechat Hallenbad (208157)")
+    assert station_label(GROUNDWATER_STATIONS[0]) == (
+        "Groundwater: Leobersdorf Bl 451 (300699)"
+    )
 
 
 def test_get_enabled_station_configs_defaults_to_empty() -> None:
@@ -130,3 +140,23 @@ def test_river_station_sensor_uses_suffix_and_hzbnr_for_unique_id() -> None:
     assert sensor.hzbnr == 213371
     assert sensor.native_value == 2.75
     assert sensor.entity_id == "sensor.ehyd_fischering_discharge"
+
+
+def test_groundwater_station_sensor_uses_elevation_metadata() -> None:
+    coordinator = SimpleNamespace(
+        data={
+            "river": {"features": []},
+            "groundwater": {
+                "features": [{"properties": {"hzbnr": 300699, "wert": 231.4}}]
+            },
+        }
+    )
+    extractor = GroundwaterStationDataExtractor(coordinator, 300699)
+    sensor = GroundwaterSensor(coordinator, "leobersdorf_bl_451", 300699)
+
+    assert extractor.get_native_value() == 231.4
+    assert sensor.unique_id == "ehyd_leobersdorf_bl_451_elevation"
+    assert sensor.entity_id == "sensor.ehyd_leobersdorf_bl_451_elevation"
+    assert sensor.native_unit_of_measurement == "m a.s.l"
+    assert sensor.device_class == "distance"
+    assert sensor.icon == "mdi:altimeter"

@@ -9,6 +9,12 @@
             },
             "ehyd_fischering_discharge": {
                 "name": "Discharge Lavant Fischering"
+            },
+            "ehyd_leobersdorf_bl_451_elevation": {
+                "name": "Elevation Leobersdorf Bl 451"
+            },
+            "ehyd_langenzersdorf_br_2112_elevation": {
+                "name": "Elevation Langenzersdorf Br 2112"
             }
         }
     }
