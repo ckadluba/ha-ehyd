@@ -67,7 +67,7 @@ class EhydConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         return EhydOptionsFlowHandler()
 
     async def async_step_user(self, user_input: dict[str, str] | None = None):  # noqa: ANN201
-        """Choose a river station when creating the integration."""
+        """Choose a station when creating the integration."""
         if user_input is not None:
             station_suffix = user_input["station"]
             if station_is_configured(self._async_current_entries(), station_suffix):
@@ -124,7 +124,7 @@ class EhydOptionsFlowHandler(config_entries.OptionsFlow):
     """Handle per-station selection for the eHYD config entry."""
 
     def _get_selected_stations(self) -> list[str]:
-        """Return the currently selected river station suffixes."""
+        """Return the currently selected station suffixes."""
         options = self.config_entry.options
         data = self.config_entry.data
         selected = options.get(
@@ -149,14 +149,14 @@ class EhydOptionsFlowHandler(config_entries.OptionsFlow):
             data_schema=vol.Schema(
                 {
                     vol.Required("action", default="add_station"): vol.In(
-                        {"add_station": "Add river station"}
+                        {"add_station": "Add station"}
                     )
                 }
             ),
         )
 
     async def async_step_add_station(self, user_input: dict[str, str] | None = None):  # noqa: ANN201
-        """Choose a river station to add as a service/device."""
+        """Choose a station to add as a service/device."""
         selected = self._get_selected_stations()
         available = [
             station for station in ALL_STATIONS if station["suffix"] not in selected
