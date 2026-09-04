@@ -40,10 +40,6 @@
         "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,readonly",
         "source=${localEnv:HOME}/.gitconfig-github,target=/home/vscode/.gitconfig-github,type=bind,readonly"
     ],
-    "runArgs": [
-        "--env-file",
-        "${localWorkspaceFolder}/.env"
-    ],
     "features": {
         "ghcr.io/devcontainers/features/python:1": {
             "version": "3.14"

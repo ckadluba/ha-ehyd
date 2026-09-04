@@ -1,6 +1,7 @@
 """Constants for the eHYD integration."""
 
 DOMAIN = "ehyd"
+DATA_COORDINATOR = "coordinator"
 INTEGRATION_NAME = "eHYD"
 INTEGRATION_DEVICE_MANUFACTURER = "Christian Kadluba (data provided by ehyd.gv.at)"
 PLATFORMS = ["sensor"]

@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 
 from homeassistant.helpers import config_validation as cv
 
-from .const import DOMAIN, PLATFORMS
+from .const import DATA_COORDINATOR, DOMAIN, PLATFORMS
 from .coordinator import EhydDataUpdateCoordinator
 
 if TYPE_CHECKING:
@@ -23,11 +23,14 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:  # noqa: ARG00
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up eHYD from a config entry."""
-    coordinator = EhydDataUpdateCoordinator(hass, entry)
-    await coordinator.async_config_entry_first_refresh()
+    domain_data = hass.data.setdefault(DOMAIN, {})
+    coordinator = domain_data.get(DATA_COORDINATOR)
+    if coordinator is None:
+        coordinator = EhydDataUpdateCoordinator(hass)
+        await coordinator.async_config_entry_first_refresh()
+        domain_data[DATA_COORDINATOR] = coordinator
 
-    hass.data.setdefault(DOMAIN, {})
-    hass.data[DOMAIN][entry.entry_id] = coordinator
+    domain_data[entry.entry_id] = coordinator
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     entry.async_on_unload(entry.add_update_listener(async_reload_entry))
@@ -38,7 +41,10 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Unload a config entry."""
     unload_ok = await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
     if unload_ok:
-        hass.data[DOMAIN].pop(entry.entry_id, None)
+        domain_data = hass.data[DOMAIN]
+        domain_data.pop(entry.entry_id, None)
+        if not any(key != DATA_COORDINATOR for key in domain_data):
+            domain_data.pop(DATA_COORDINATOR, None)
     return unload_ok
 
 

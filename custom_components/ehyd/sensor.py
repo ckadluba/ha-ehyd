@@ -157,12 +157,6 @@ class StationSensor(CoordinatorEntity, SensorEntity):
 
         self._attr_name = f"{display_name} {metadata.nametag.title()}"
 
-        _LOGGER.debug(
-            ("StationSensor initialized with _attr_unique_id: %s, station_name: %s"),
-            self._attr_unique_id,
-            self.name_suffix,
-        )
-
     @property
     def native_value(self) -> float | None:
         """Return the current water level."""
@@ -303,3 +297,13 @@ class GroundwaterSensor(StationSensor):
         )
 
         self.hzbnr = hzbnr
+
+        _LOGGER.debug(
+            (
+                "GroundwaterSensor initialized with _attr_unique_id: %s, "
+                "station_name: %s, hzbnr: %s"
+            ),
+            self._attr_unique_id,
+            station_name,
+            hzbnr,
+        )
