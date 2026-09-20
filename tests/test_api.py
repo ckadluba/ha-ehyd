@@ -121,3 +121,32 @@ async def test_coordinator_requests_only_configured_station_types(
             "fetch_groundwater": expected_flags[1],
         }
     ]
+
+
+@pytest.mark.asyncio
+async def test_coordinator_requests_union_of_all_config_entries(monkeypatch) -> None:
+    calls = []
+
+    class FakeApi:
+        def __init__(self, hass) -> None:
+            self.raw_response = {"result": "ok"}
+
+        async def async_update(self, **kwargs) -> None:
+            calls.append(kwargs)
+
+    monkeypatch.setattr("custom_components.ehyd.coordinator.EhydApi", FakeApi)
+    entries = [
+        SimpleNamespace(
+            data={"selected_stations": ["schwechat_hallenbad"]}, options={}
+        ),
+        SimpleNamespace(
+            data={"selected_stations": ["leobersdorf_bl_451"]}, options={}
+        ),
+    ]
+    coordinator = EhydDataUpdateCoordinator.__new__(EhydDataUpdateCoordinator)
+    coordinator.hass = SimpleNamespace(
+        config_entries=SimpleNamespace(async_entries=lambda _domain: entries)
+    )
+
+    assert await coordinator._async_update_data() == {"result": "ok"}
+    assert calls == [{"fetch_river": True, "fetch_groundwater": True}]
