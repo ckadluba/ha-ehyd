@@ -62,6 +62,7 @@ class EhydDataUpdateCoordinator(DataUpdateCoordinator):
             )
         except Exception as err:
             msg = f"Error fetching eHYD data: {err}"
+            _LOGGER.exception(msg)
             raise UpdateFailed(msg) from err
 
         self._fetched_types = {

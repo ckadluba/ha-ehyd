@@ -1,7 +1,10 @@
+import asyncio
+import logging
 import sys
 from pathlib import Path
 from types import SimpleNamespace
 
+import aiohttp
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -81,6 +84,59 @@ async def test_api_fetches_only_requested_station_types(
         )
         if enabled
     ]
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("error", "expected_message"),
+    [
+        (
+            asyncio.TimeoutError(),
+            "Timeout while fetching river data from eHYD API",
+        ),
+        (
+            aiohttp.ClientResponseError(None, (), status=503),
+            "HTTP error while fetching river data from eHYD API",
+        ),
+        (
+            ValueError("invalid JSON"),
+            "Invalid response from river eHYD API",
+        ),
+    ],
+)
+async def test_api_logs_specific_errors(
+    monkeypatch,
+    caplog,
+    error: Exception,
+    expected_message: str,
+) -> None:
+    class ErrorResponse(FakeResponse):
+        def raise_for_status(self) -> None:
+            if isinstance(error, aiohttp.ClientResponseError):
+                raise error
+
+        async def json(self) -> dict:
+            raise error
+
+    class ErrorSession(FakeSession):
+        def get(self, url: str, **kwargs) -> ErrorResponse:
+            self.urls.append(url)
+            if isinstance(error, asyncio.TimeoutError):
+                raise error
+            return ErrorResponse(url)
+
+    monkeypatch.setattr(
+        "custom_components.ehyd.api.aiohttp.ClientSession", ErrorSession
+    )
+
+    with caplog.at_level(logging.ERROR, logger="custom_components.ehyd.api"):
+        with pytest.raises(RuntimeError, match=expected_message):
+            await EhydApi(SimpleNamespace()).async_update(
+                fetch_river=True,
+                fetch_groundwater=False,
+            )
+
+    assert expected_message in caplog.text
 
 
 @pytest.mark.asyncio

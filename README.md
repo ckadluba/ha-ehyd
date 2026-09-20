@@ -139,6 +139,9 @@ https://ehyd.gv.at/services/GrundwasserAktuell/json
 ```
 
 Check DNS, internet access, firewall rules, and whether the eHYD services are currently available.
+The integration logs the affected station type and endpoint for connection,
+timeout, HTTP-status, and invalid-response errors. Enable debug logging for
+`custom_components.ehyd` if you need the request details.
 
 ## Development
 
