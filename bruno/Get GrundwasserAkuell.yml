@@ -1,0 +1,4865 @@
+info:
+  name: Get GrundwasserAkuell
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: https://ehyd.gv.at/services/GrundwasserAktuell/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: GrundwasserAktuell 2026-08-21
+    request:
+      url: https://ehyd.gv.at/services/GrundwasserAktuell/json
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: content-type
+          value: application/json; charset=utf-8
+        - name: access-control-allow-origin
+          value: "*"
+        - name: x-frame-options
+          value: SAMEORIGIN, SAMEORIGIN, SAMEORIGIN
+        - name: x-node
+          value: C, C, C
+        - name: x-permitted-cross-domain-policies
+          value: none, none, none
+        - name: date
+          value: Fri, 21 Aug 2026 13:52:38 GMT
+        - name: content-length
+          value: "92981"
+        - name: age
+          value: "343"
+        - name: accept-ranges
+          value: bytes
+        - name: strict-transport-security
+          value: max-age=63072000
+        - name: alt-svc
+          value: h3=":443"; ma=2592000
+      body:
+        type: json
+        data: |-
+          {
+            "type": "FeatureCollection",
+            "features": [
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.421912089,
+                    47.525597773
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 353904,
+                  "mstnam02": "St.Johann i.T., Bl 19",
+                  "wert": 651.63,
+                  "zp": "2026-08-20",
+                  "daterr05": "2006-12-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=353904"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.782117883,
+                    47.600838076
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 353342,
+                  "mstnam02": "Straßen, Bl   0003",
+                  "wert": 635.84,
+                  "zp": "2026-08-20",
+                  "daterr05": "2007-08-02T00:00:00",
+                  "farbcode": "#0080FF",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw0003"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.612759502,
+                    48.163604444
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 322891,
+                  "mstnam02": "St.Pölten, Bl 251",
+                  "wert": 283.65,
+                  "zp": "2026-08-20",
+                  "daterr05": "1979-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/322891/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.541936005,
+                    46.590034072
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 338343,
+                  "mstnam02": "Vorderberg, Bl 118",
+                  "wert": 552.67,
+                  "zp": "2026-08-20",
+                  "daterr05": "2003-08-14T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Kärnten",
+                  "internet": "https://info.ktn.gv.at/asp/hydro/daten/svg/2002272gw365d.svg"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.43445212,
+                    47.760506115
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 353573,
+                  "mstnam02": "Pöttelsdorf, Bl 43",
+                  "wert": 219.52,
+                  "zp": "2026-08-20",
+                  "daterr05": "1999-07-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/poettelsdorf-bl43"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.022217982,
+                    47.364473286
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 345710,
+                  "mstnam02": "Neustift a.d. Lafnitz, Bl 30",
+                  "wert": 399.93,
+                  "zp": "2026-08-20",
+                  "daterr05": "2000-09-19T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/neustift-bl-30"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.564494147,
+                    47.603922078
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 345702,
+                  "mstnam02": "Neckenmarkt, Bl 7",
+                  "wert": 210.89,
+                  "zp": "2026-08-20",
+                  "daterr05": "2002-02-05T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/neckenmarkt-bl-7"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.817403153,
+                    47.76943708
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 345629,
+                  "mstnam02": "Illmitz, Bl 159",
+                  "wert": 117.08,
+                  "zp": "2026-08-20",
+                  "daterr05": "2000-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/illmitzbl159"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    17.132432051,
+                    48.007072053
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 345595,
+                  "mstnam02": "Deutsch Jahrndorf, Bl 34",
+                  "wert": 125.14,
+                  "zp": "2026-08-20",
+                  "daterr05": "1998-10-13T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/dtjahrndorfbl34"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.436895177,
+                    47.562005105
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 345520,
+                  "mstnam02": "Markt St. Martin, Bl 1",
+                  "wert": 283.61,
+                  "zp": "2026-08-20",
+                  "daterr05": "1998-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/markt-st-martin-bl1"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.983869369,
+                    47.844630221
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 345298,
+                  "mstnam02": "Halbturn, Bl 151",
+                  "wert": 119.22,
+                  "zp": "2026-08-20",
+                  "daterr05": "1997-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/halbturnbl151"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    17.052127043,
+                    47.733094046
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 345280,
+                  "mstnam02": "Andau, Bl 150",
+                  "wert": 112.21,
+                  "zp": "2026-08-20",
+                  "daterr05": "1997-04-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/andaubl150"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.560148084,
+                    47.437544161
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 335810,
+                  "mstnam02": "Klostermarienberg, Bl 16",
+                  "wert": 230.42,
+                  "zp": "2026-08-20",
+                  "daterr05": "1993-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/klostermarienberg-bl-16"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    17.092365019,
+                    47.913421018
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 335547,
+                  "mstnam02": "Nickelsdorf, Bl 52A",
+                  "wert": 120.95,
+                  "zp": "2026-08-20",
+                  "daterr05": "1993-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/nickelsdbl52a"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.100665201,
+                    47.07830761
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 335315,
+                  "mstnam02": "Deutsch Kaltenbrunn, Bl 12",
+                  "wert": 254.39,
+                  "zp": "2026-08-20",
+                  "daterr05": "1990-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/dt-kaltenbrunn-bl-12"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.900838263,
+                    47.867353835
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 319418,
+                  "mstnam02": "Gols, Bl 125",
+                  "wert": 119.6,
+                  "zp": "2026-08-20",
+                  "daterr05": "1974-11-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/gols-bl-125"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.85422906,
+                    47.889303093
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 316174,
+                  "mstnam02": "Neusiedl am See, Bl 124",
+                  "wert": 114.13,
+                  "zp": "2026-08-20",
+                  "daterr05": "1974-11-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/neusiedlbl124"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.94160873,
+                    47.912853245
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 316166,
+                  "mstnam02": "Gols, Bl 39",
+                  "wert": 131.93,
+                  "zp": "2026-08-20",
+                  "daterr05": "1974-11-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/golsbl39"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    17.067484324,
+                    48.082910784
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 316091,
+                  "mstnam02": "Kittsee, Br 17",
+                  "wert": 131.13,
+                  "zp": "2026-08-20",
+                  "daterr05": "1973-11-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/kittsee-br17"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    10.561588248,
+                    46.97950214
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 358440,
+                  "mstnam02": "Pfunds, Bl12 (S2)",
+                  "wert": 941.4,
+                  "zp": "2026-08-20",
+                  "daterr05": "2010-03-17T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=358440"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.96198853,
+                    46.746141352
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 338780,
+                  "mstnam02": "Oetting, Bl 424",
+                  "wert": 618.95,
+                  "zp": "2026-08-20",
+                  "daterr05": "2003-05-13T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Kärnten",
+                  "internet": "https://info.ktn.gv.at/asp/hydro/daten/svg/2002294gw365d.svg"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.0055471,
+                    46.672133809
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 338327,
+                  "mstnam02": "Mauthen, Bl 701",
+                  "wert": 662.01,
+                  "zp": "2026-08-20",
+                  "daterr05": "2003-08-27T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Kärnten",
+                  "internet": "https://info.ktn.gv.at/asp/hydro/daten/svg/2002271gw365d.svg"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.785053478,
+                    46.606026277
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 338087,
+                  "mstnam02": "Moos, Bl 328",
+                  "wert": 399.24,
+                  "zp": "2026-08-20",
+                  "daterr05": "1996-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Kärnten",
+                  "internet": "https://info.ktn.gv.at/asp/hydro/daten/svg/2002159gw365d.svg"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.64678681,
+                    46.572493097
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 338061,
+                  "mstnam02": "Eberndorf, Bl 327",
+                  "wert": 467.51,
+                  "zp": "2026-08-20",
+                  "daterr05": "1996-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Kärnten",
+                  "internet": "https://info.ktn.gv.at/asp/hydro/daten/svg/2002158gw365d.svg"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.458519289,
+                    46.820799195
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 338855,
+                  "mstnam02": "Muschk, Bl 205",
+                  "wert": 546.62,
+                  "zp": "2026-08-20",
+                  "daterr05": "1988-01-07T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Kärnten",
+                  "internet": "https://info.ktn.gv.at/asp/hydro/daten/svg/2002144gw365d.svg"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.321192343,
+                    46.686203986
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 338632,
+                  "mstnam02": "Maria Saal, Bl 219",
+                  "wert": 450,
+                  "zp": "2026-08-20",
+                  "daterr05": "1991-11-04T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Kärnten",
+                  "internet": "https://info.ktn.gv.at/asp/hydro/daten/svg/2002133gw365d.svg"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.139995657,
+                    46.529462898
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 338236,
+                  "mstnam02": "Feistritz i.R., Bl 510",
+                  "wert": 453.53,
+                  "zp": "2026-08-20",
+                  "daterr05": "1968-02-20T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Kärnten",
+                  "internet": "https://info.ktn.gv.at/asp/hydro/daten/svg/2002114gw365d.svg"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.345747403,
+                    46.614156315
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 318089,
+                  "mstnam02": "Klagenfurt, Bl 204",
+                  "wert": 429.48,
+                  "zp": "2026-08-19",
+                  "daterr05": "1990-11-14T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Kärnten",
+                  "internet": "https://info.ktn.gv.at/asp/hydro/daten/svg/2002091gw365d.svg"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.327224476,
+                    46.761343547
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 317883,
+                  "mstnam02": "Kleblach-Lind, Bl 403",
+                  "wert": 567.38,
+                  "zp": "2026-08-20",
+                  "daterr05": "1988-03-10T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Kärnten",
+                  "internet": "https://info.ktn.gv.at/asp/hydro/daten/svg/2002069gw365d.svg"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.826680526,
+                    46.590338007
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 309674,
+                  "mstnam02": "Judendorf, Bl  14 A",
+                  "wert": 492.73,
+                  "zp": "2026-08-20",
+                  "daterr05": "1957-09-09T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Kärnten",
+                  "internet": "https://info.ktn.gv.at/asp/hydro/daten/svg/2002012gw365d.svg"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.408864127,
+                    47.219196177
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 353631,
+                  "mstnam02": "Burg Bl 3",
+                  "wert": 241.13,
+                  "zp": "2026-08-20",
+                  "daterr05": "2014-11-25T00:00:00",
+                  "farbcode": "#58FA58",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/burg-br-3"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.382475093,
+                    47.411624116
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 353524,
+                  "mstnam02": "Lockenhaus, Bl 2",
+                  "wert": 335.03,
+                  "zp": "2026-08-20",
+                  "daterr05": "2007-10-09T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/lockenhaus-bl-2"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.375398133,
+                    47.866054118
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 345868,
+                  "mstnam02": "Neufeld a.d. Leitha, Bl 10",
+                  "wert": 226.33,
+                  "zp": "2026-08-20",
+                  "daterr05": "2004-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/neufeld-bl10"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.180779572,
+                    46.927420365
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 345728,
+                  "mstnam02": "Neumarkt a.d.R., Bl 7",
+                  "wert": 231.28,
+                  "zp": "2026-08-20",
+                  "daterr05": "2000-09-20T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/neumarkt-bl-7"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.87651311,
+                    47.996508075
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 345181,
+                  "mstnam02": "Parndorf, Bl 59",
+                  "wert": 176.81,
+                  "zp": "2026-08-20",
+                  "daterr05": "1996-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/parndorf-bl-59"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    17.039705116,
+                    48.041031089
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 306274,
+                  "mstnam02": "Pama, Bl 6",
+                  "wert": 132.01,
+                  "zp": "2026-08-19",
+                  "daterr05": "1956-07-02T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/pamabl6"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    11.8685475,
+                    47.30943604
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 358093,
+                  "mstnam02": "Ried im Zillertal, Bl 1",
+                  "wert": 542.05,
+                  "zp": "2026-08-20",
+                  "daterr05": "2008-01-21T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=358093"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.542098159,
+                    48.189834004
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 304733,
+                  "mstnam02": "Groß-Enzersdorf, Br",
+                  "wert": 149.79,
+                  "zp": "2026-08-20",
+                  "daterr05": "1963-01-16T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/304733/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.559034193,
+                    48.295885914
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 304584,
+                  "mstnam02": "Deutsch Wagram, Bl",
+                  "wert": 153.59,
+                  "zp": "2026-08-20",
+                  "daterr05": "1939-07-03T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/304584/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.008038769,
+                    48.289005973
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 304014,
+                  "mstnam02": "Judenau, Br",
+                  "wert": 179.18,
+                  "zp": "2026-08-20",
+                  "daterr05": "1939-07-14T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/304014/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.84758519,
+                    48.407414235
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 303198,
+                  "mstnam02": "Kollersdorf, Bl",
+                  "wert": 182.53,
+                  "zp": "2026-08-20",
+                  "daterr05": "1939-07-26T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/303198/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.722122069,
+                    48.399295012
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 303081,
+                  "mstnam02": "Donaudorf, Br",
+                  "wert": 187.56,
+                  "zp": "2026-08-20",
+                  "daterr05": "1939-03-10T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/303081/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.531728691,
+                    47.998742243
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 301242,
+                  "mstnam02": "Reisenberg, Bl 29",
+                  "wert": 175.18,
+                  "zp": "2026-08-20",
+                  "daterr05": "1961-11-20T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/301242/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.215811675,
+                    47.930125663
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 300699,
+                  "mstnam02": "Leobersdorf, Bl 451",
+                  "wert": 262.18,
+                  "zp": "2026-08-20",
+                  "daterr05": "1963-10-11T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/300699/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.385856236,
+                    48.081044545
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 300012,
+                  "mstnam02": "Achau, Br",
+                  "wert": 171.11,
+                  "zp": "2026-08-20",
+                  "daterr05": "1940-05-03T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/300012/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.334305662,
+                    46.541318258
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 354688,
+                  "mstnam02": "Ferlach, Bl 518",
+                  "wert": 422.89,
+                  "zp": "2026-08-20",
+                  "daterr05": "2013-02-28T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Kärnten",
+                  "internet": "https://info.ktn.gv.at/asp/hydro/daten/svg/2002616gw365d.svg"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.26346617,
+                    46.895235115
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 354563,
+                  "mstnam02": "Penk, Bl 633",
+                  "wert": 637.29,
+                  "zp": "2026-08-20",
+                  "daterr05": "2009-03-26T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Kärnten",
+                  "internet": "https://info.ktn.gv.at/asp/hydro/daten/svg/2002557gw365d.svg"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.393998254,
+                    46.96519529
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 351890,
+                  "mstnam02": "Friesach, Bl 893",
+                  "wert": 634.34,
+                  "zp": "2026-08-20",
+                  "daterr05": "2004-10-05T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Kärnten",
+                  "internet": "https://info.ktn.gv.at/asp/hydro/daten/svg/2002354gw365d.svg"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.614561566,
+                    46.73021656
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 338988,
+                  "mstnam02": "Kamering, Bl 623",
+                  "wert": 511.3,
+                  "zp": "2026-08-20",
+                  "daterr05": "2003-05-12T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Kärnten",
+                  "internet": "https://info.ktn.gv.at/asp/hydro/daten/svg/2002306gw365d.svg"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.640787099,
+                    47.849910079
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 313304,
+                  "mstnam02": "Schützen am Gebirge, Bl  II",
+                  "wert": 127.09,
+                  "zp": "2026-08-20",
+                  "daterr05": "1964-01-06T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/schuetzen-bl-ii"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.316437426,
+                    48.372612838
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 331272,
+                  "mstnam02": "Leobendorf, Bl 351",
+                  "wert": 163.42,
+                  "zp": "2026-08-20",
+                  "daterr05": "1984-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/331272/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.878800113,
+                    48.590148355
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 327312,
+                  "mstnam02": "Niederabsdorf, Bl 328",
+                  "wert": 153.2,
+                  "zp": "2026-08-20",
+                  "daterr05": "1983-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/327312/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.540805702,
+                    48.158866258
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 327171,
+                  "mstnam02": "Obergrafendorf, Bl 315",
+                  "wert": 269.96,
+                  "zp": "2026-08-20",
+                  "daterr05": "1982-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/327171/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.898284567,
+                    48.694018231
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 326637,
+                  "mstnam02": "Bernhardsthal, Bl 266",
+                  "wert": 154.02,
+                  "zp": "2026-08-20",
+                  "daterr05": "1979-01-01T00:00:00",
+                  "farbcode": "#58FA58",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/326637/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.010874029,
+                    48.127122493
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 326512,
+                  "mstnam02": "Kottingburgstall, Bl 259",
+                  "wert": 236.1,
+                  "zp": "2026-08-20",
+                  "daterr05": "1979-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/326512/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.243636265,
+                    48.208772962
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 322800,
+                  "mstnam02": "Ornding, Bl 2043.004",
+                  "wert": 209.42,
+                  "zp": "2026-08-20",
+                  "daterr05": "1976-06-24T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/322800/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.980520417,
+                    48.403558284
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 319228,
+                  "mstnam02": "Absdorf, Bl 214",
+                  "wert": 178.23,
+                  "zp": "2026-08-20",
+                  "daterr05": "1974-09-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/319228/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.377031941,
+                    48.292506367
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 313221,
+                  "mstnam02": "Langenzersdorf, Br 2112",
+                  "wert": 158.18,
+                  "zp": "2026-08-20",
+                  "daterr05": "1970-10-07T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/313221/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.923110248,
+                    48.247458095
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 304915,
+                  "mstnam02": "Marchegg-Eisenbahnstation, Br",
+                  "wert": 138.47,
+                  "zp": "2026-08-20",
+                  "daterr05": "1954-01-19T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/304915/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.809037611,
+                    48.165447378
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 304790,
+                  "mstnam02": "Kopfstetten, Br",
+                  "wert": 141.82,
+                  "zp": "2026-08-20",
+                  "daterr05": "1939-05-08T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/304790/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.837609943,
+                    46.769577279
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 338525,
+                  "mstnam02": "St. Andrä, Bl 901",
+                  "wert": 403.09,
+                  "zp": "2026-08-20",
+                  "daterr05": "2004-01-15T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Kärnten",
+                  "internet": "https://info.ktn.gv.at/asp/hydro/daten/svg/2002282gw365d.svg"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.947454948,
+                    47.787255845
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 306043,
+                  "mstnam02": "St. Andrä am Zicksee, Br 107",
+                  "wert": 118.24,
+                  "zp": "2026-08-20",
+                  "daterr05": "1966-07-04T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/st-andrae-br-107"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.742523343,
+                    47.184690951
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 309344,
+                  "mstnam02": "Thüringen, Bl 05.41.01 A",
+                  "wert": 512.51,
+                  "zp": "2026-08-20",
+                  "daterr05": "1956-02-29T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=309344&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    10.537605101,
+                    47.499801202
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 342659,
+                  "mstnam02": "Tannheim-Innerg., Bl 1",
+                  "wert": 1100.61,
+                  "zp": "2026-08-20",
+                  "daterr05": "2004-12-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=342659"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    10.913469562,
+                    47.170938406
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 346239,
+                  "mstnam02": "Umhausen-Tumpen, Bl 2 (KBT1)",
+                  "wert": 911.92,
+                  "zp": "2026-08-20",
+                  "daterr05": "1996-04-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=346239"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.235494617,
+                    48.566400882
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 337469,
+                  "mstnam02": "Kleinschönau, Bl 466",
+                  "wert": 624,
+                  "zp": "2026-08-20",
+                  "daterr05": "2005-01-26T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/337469/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.80413904,
+                    48.056043302
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 337378,
+                  "mstnam02": "Kröllendorf, Bl 456",
+                  "wert": 293.81,
+                  "zp": "2026-08-20",
+                  "daterr05": "2001-09-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/337378/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.529649951,
+                    48.366273601
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 337337,
+                  "mstnam02": "Pillichsdorf, Bl 452",
+                  "wert": 164.88,
+                  "zp": "2026-08-20",
+                  "daterr05": "1996-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/337337/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.205799087,
+                    48.315215532
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 337212,
+                  "mstnam02": "Pöggstall, Bl 442",
+                  "wert": 441.34,
+                  "zp": "2026-08-20",
+                  "daterr05": "1994-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/337212/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.611055756,
+                    48.041784719
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 337170,
+                  "mstnam02": "St.Peter in der Au, Bl 438",
+                  "wert": 339.88,
+                  "zp": "2026-08-19",
+                  "daterr05": "1992-07-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/337170/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.104330754,
+                    48.179938114
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 337063,
+                  "mstnam02": "Hagsdorf, Blt 427",
+                  "wert": 214.22,
+                  "zp": "2026-08-19",
+                  "daterr05": "1991-09-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/337063/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.24155526,
+                    48.58195506
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 331991,
+                  "mstnam02": "Enzersdorf im Thale, Bl 419",
+                  "wert": 259.11,
+                  "zp": "2026-08-20",
+                  "daterr05": "1991-07-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/331991/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.899304806,
+                    48.326748175
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 331892,
+                  "mstnam02": "Dürnrohr, Blt 409",
+                  "wert": 180.6,
+                  "zp": "2026-08-19",
+                  "daterr05": "1990-08-02T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/331892/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.705990316,
+                    48.639963062
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 331819,
+                  "mstnam02": "Mold, Bl 401",
+                  "wert": 297.07,
+                  "zp": "2026-08-20",
+                  "daterr05": "1990-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/331819/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.020348194,
+                    48.084398631
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 331504,
+                  "mstnam02": "Klausen-Leopoldsdorf, Bl 365",
+                  "wert": 367.58,
+                  "zp": "2026-08-20",
+                  "daterr05": "1988-02-04T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/331504/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.977749675,
+                    48.799358615
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 331447,
+                  "mstnam02": "Breitensee, Bl 359",
+                  "wert": 468.68,
+                  "zp": "2026-08-20",
+                  "daterr05": "1988-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/331447/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.537395321,
+                    48.18040519
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 327189,
+                  "mstnam02": "St.Valentin, Bl 316",
+                  "wert": 249.46,
+                  "zp": "2026-08-20",
+                  "daterr05": "1982-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/327189/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.570659035,
+                    48.12974707
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 359471,
+                  "mstnam02": "Wappeltsham, Br 1.2",
+                  "wert": 566.81,
+                  "zp": "2026-08-20",
+                  "daterr05": "2012-05-03T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/43434/Wappeltsham/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.492920198,
+                    48.497179896
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 324921,
+                  "mstnam02": "Freistadt, Br 8.2",
+                  "wert": 552.63,
+                  "zp": "2026-08-20",
+                  "daterr05": "1993-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/40057/Freistadt/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.130043315,
+                    47.863778038
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 324913,
+                  "mstnam02": "Obermicheldorf, Br 5.4",
+                  "wert": 486.16,
+                  "zp": "2026-08-20",
+                  "daterr05": "1993-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/40306/Obermicheldorf/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.5829818,
+                    48.011511582
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 324848,
+                  "mstnam02": "Gampern, Br 10.2",
+                  "wert": 448.72,
+                  "zp": "2026-08-20",
+                  "daterr05": "1993-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/40298/Gampern/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.981348897,
+                    47.985456155
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 324772,
+                  "mstnam02": "Lungendorf, Br 64.2",
+                  "wert": 428.97,
+                  "zp": "2026-08-20",
+                  "daterr05": "1991-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/1025694/Lungendorf/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.061568898,
+                    48.028221725
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 324707,
+                  "mstnam02": "Ried I.Trk., Br 33.2",
+                  "wert": 404.96,
+                  "zp": "2026-08-20",
+                  "daterr05": "1991-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/1025710/Ried%20im%20Traunkreis/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.074230488,
+                    48.252814546
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 324491,
+                  "mstnam02": "St.Peter, Br 2.2",
+                  "wert": 350.62,
+                  "zp": "2026-08-20",
+                  "daterr05": "1986-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/40290/St.%20Peter/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.234417937,
+                    47.994971896
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 324483,
+                  "mstnam02": "Lengau, Bl 36.4",
+                  "wert": 495.63,
+                  "zp": "2026-08-20",
+                  "daterr05": "1986-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/43372/Lengau/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.388376734,
+                    48.245705443
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 323568,
+                  "mstnam02": "Posch, Bl 2122.10",
+                  "wert": 244.65,
+                  "zp": "2026-08-20",
+                  "daterr05": "1975-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/40274/Posch/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.971351648,
+                    48.142482889
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 314294,
+                  "mstnam02": "Lichtenegg, Br 35.1",
+                  "wert": 315.43,
+                  "zp": "2026-08-19",
+                  "daterr05": "1968-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/998981/Lichtenegg/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.715756092,
+                    48.199321243
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 308502,
+                  "mstnam02": "Hofstetten, Bl 2092.015",
+                  "wert": 230.92,
+                  "zp": "2026-08-20",
+                  "daterr05": "1964-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/40254/Hofstetten/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.132639079,
+                    48.196973161
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 307777,
+                  "mstnam02": "Marchtrenk, Br 21.9",
+                  "wert": 289.77,
+                  "zp": "2026-08-20",
+                  "daterr05": "1930-04-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/40244/Marchtrenk%20Br.%2021.9/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.074361139,
+                    48.297889145
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 307371,
+                  "mstnam02": "Straß, Blt 2152.004",
+                  "wert": 258.31,
+                  "zp": "2026-08-20",
+                  "daterr05": "1963-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/40217/Stra%C3%9F/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.150533546,
+                    48.388456088
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 359844,
+                  "mstnam02": "Oberzögersdorf, Bl 1955.011",
+                  "wert": 169.96,
+                  "zp": "2026-08-20",
+                  "daterr05": "2021-04-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/359844/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.393411382,
+                    48.729564843
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 337436,
+                  "mstnam02": "Laa an der Thaya, Bl 463",
+                  "wert": 178.25,
+                  "zp": "2026-08-20",
+                  "daterr05": "2006-11-27T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/337436/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.667076815,
+                    47.955637042
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 344747,
+                  "mstnam02": "Pranzing, Br 1.1",
+                  "wert": 431.06,
+                  "zp": "2026-08-20",
+                  "daterr05": "2010-06-24T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/43408/Pranzing/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.40838808,
+                    48.014414123
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 344440,
+                  "mstnam02": "Garsten, Br 1.1",
+                  "wert": 293.59,
+                  "zp": "2026-08-20",
+                  "daterr05": "2008-06-10T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/1003143/Garsten/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.772352124,
+                    47.795372899
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 344226,
+                  "mstnam02": "Ebensee, Br 88.1",
+                  "wert": 423.03,
+                  "zp": "2026-08-20",
+                  "daterr05": "2005-10-24T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/1098817/Ebensee/Grundwasserstand"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.406591396,
+                    48.330073964
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 344192,
+                  "mstnam02": "Reichersberg, Br 1.3",
+                  "wert": 351.04,
+                  "zp": "2026-08-20",
+                  "daterr05": "2005-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/43417/Reichersberg1.3/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.159442669,
+                    48.543923918
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 316976,
+                  "mstnam02": "Helfenberg, Br 15.2",
+                  "wert": 748.87,
+                  "zp": "2026-08-20",
+                  "daterr05": "1997-01-09T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/40266/Helfenberg/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.811861167,
+                    48.054722099
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 375006,
+                  "mstnam02": "Mitterberg, Br 54.13",
+                  "wert": 360.21,
+                  "zp": "2026-08-20",
+                  "daterr05": "1993-01-04T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/40338/Mitterberg/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.221959036,
+                    48.168798337
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 316950,
+                  "mstnam02": "St.Leonhard II, Br 16.8 A",
+                  "wert": 330.97,
+                  "zp": "2026-08-20",
+                  "daterr05": "1999-01-12T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/1018272/St.%20Leonhard/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.051389107,
+                    48.489472356
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 316943,
+                  "mstnam02": "St.Ulrich, Br 68.2",
+                  "wert": 592,
+                  "zp": "2026-08-20",
+                  "daterr05": "1996-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/1009961/St.%20Ulrich/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.731000251,
+                    48.286111216
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 324996,
+                  "mstnam02": "Kallham, Br 49.10",
+                  "wert": 413.4,
+                  "zp": "2026-08-20",
+                  "daterr05": "1996-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/1003134/Kallham/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.302805693,
+                    48.429944538
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 324947,
+                  "mstnam02": "Hellmonsödt, Br 19.2",
+                  "wert": 824.5,
+                  "zp": "2026-08-20",
+                  "daterr05": "1993-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/1175163/Hellmons%C3%B6dt/Grundwasserstand"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.023811814,
+                    47.700489299
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 331868,
+                  "mstnam02": "Wimpassing/Schwarza, Bl 406",
+                  "wert": 390.54,
+                  "zp": "2026-08-20",
+                  "daterr05": "1990-05-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/331868/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.145391088,
+                    48.115806208
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 327437,
+                  "mstnam02": "Wieselburg, Bl 339",
+                  "wert": 253.33,
+                  "zp": "2026-08-20",
+                  "daterr05": "1984-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/327437/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.057256016,
+                    48.317931763
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 304410,
+                  "mstnam02": "Tulln-E.Werk, Br",
+                  "wert": 173.07,
+                  "zp": "2026-08-20",
+                  "daterr05": "1958-11-21T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/304410/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.42680591,
+                    47.951872503
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 301754,
+                  "mstnam02": "Unterwaltersdorf, Bl 38",
+                  "wert": 195.06,
+                  "zp": "2026-08-20",
+                  "daterr05": "1961-11-30T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/301754/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.040705545,
+                    47.485015277
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 330621,
+                  "mstnam02": "Wörgl-Rattenberg, Bl  2",
+                  "wert": 498.63,
+                  "zp": "2026-08-20",
+                  "daterr05": "1985-08-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=330621"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.429853474,
+                    47.732143712
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 358044,
+                  "mstnam02": "Gschwand, Bl 1",
+                  "wert": 539.2,
+                  "zp": "2026-08-19",
+                  "daterr05": "2014-07-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=358044"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.165380547,
+                    47.588967844
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 358036,
+                  "mstnam02": "Golling/Moartal, Bl 2",
+                  "wert": 465.68,
+                  "zp": "2026-08-20",
+                  "daterr05": "2001-11-19T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=358036"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.410938132,
+                    47.386222932
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 357947,
+                  "mstnam02": "Enns-Altenmarkt, KB04/10",
+                  "wert": 842.7,
+                  "zp": "2026-08-19",
+                  "daterr05": "2011-11-30T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=357947"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.452406965,
+                    47.279203826
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 357921,
+                  "mstnam02": "Mittersill, P9-06",
+                  "wert": 787.68,
+                  "zp": "2026-08-19",
+                  "daterr05": "2011-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=357921"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.692203036,
+                    47.090369777
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 355156,
+                  "mstnam02": "St.Margarethen i. Lg, P2",
+                  "wert": 1028.56,
+                  "zp": "2026-08-20",
+                  "daterr05": "2008-06-04T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=355156"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.791460895,
+                    47.128739307
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 355073,
+                  "mstnam02": "Mörtelsdorf, P10",
+                  "wert": 1010.91,
+                  "zp": "2026-08-19",
+                  "daterr05": "2008-06-04T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=355073"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.081306734,
+                    47.762513344
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 347799,
+                  "mstnam02": "Elsbethen, Bl 1",
+                  "wert": 421.21,
+                  "zp": "2026-08-20",
+                  "daterr05": "2002-04-17T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=347799"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.835002466,
+                    47.420531166
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 347781,
+                  "mstnam02": "Bergham, Bl 1",
+                  "wert": 725.64,
+                  "zp": "2026-08-20",
+                  "daterr05": "1999-08-17T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=347781"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.833381497,
+                    47.452583624
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 347708,
+                  "mstnam02": "Lichtenberg, Bl 5",
+                  "wert": 707.01,
+                  "zp": "2026-08-20",
+                  "daterr05": "2000-05-10T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=347708"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.03872704,
+                    47.775551814
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 347658,
+                  "mstnam02": "Morzg, Bl 364",
+                  "wert": 428.99,
+                  "zp": "2026-08-19",
+                  "daterr05": "1997-04-23T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=347658"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.878699608,
+                    47.98814842
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 321083,
+                  "mstnam02": "St.Georgen, Bl  9",
+                  "wert": 383.08,
+                  "zp": "2026-08-20",
+                  "daterr05": "1994-08-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=321083"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.001322035,
+                    47.870674678
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 320861,
+                  "mstnam02": "Anthering, Bl  2",
+                  "wert": 400.37,
+                  "zp": "2026-08-20",
+                  "daterr05": "1994-08-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=320861"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.071704252,
+                    47.717579473
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 320721,
+                  "mstnam02": "Taxach, Bl  31",
+                  "wert": 433.21,
+                  "zp": "2026-08-20",
+                  "daterr05": "1968-03-28T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=320721"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.109278788,
+                    47.68889745
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 320549,
+                  "mstnam02": "Gries, Br 15",
+                  "wert": 441.39,
+                  "zp": "2026-08-20",
+                  "daterr05": "1971-10-14T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=320549"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.570019674,
+                    48.5350195
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 359505,
+                  "mstnam02": "Esternberg, Bl 1",
+                  "wert": 493.35,
+                  "zp": "2026-08-20",
+                  "daterr05": "2014-09-22T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/40330/Esternberg/Grundwasserstand?period=P1M"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.638183981,
+                    48.580275722
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 331942,
+                  "mstnam02": "Wilfersdorf, Bl 414",
+                  "wert": 181.61,
+                  "zp": "2026-08-20",
+                  "daterr05": "1991-07-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/331942/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.079691397,
+                    47.258304506
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 343327,
+                  "mstnam02": "Unterrohr, Bl  5928",
+                  "wert": 324.51,
+                  "zp": "2026-08-20",
+                  "daterr05": "1998-03-26T00:00:00",
+                  "farbcode": "#58FA58",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw5928"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.833930686,
+                    46.732662272
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 329243,
+                  "mstnam02": "Diepersdorf, Bl 38915",
+                  "wert": 224.33,
+                  "zp": "2026-08-20",
+                  "daterr05": "1981-09-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw38915"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.785863881,
+                    47.189879368
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 325746,
+                  "mstnam02": "Lind, Bl  2507",
+                  "wert": 636.37,
+                  "zp": "2026-08-20",
+                  "daterr05": "1976-11-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw2507"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.323461818,
+                    47.153752134
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 325589,
+                  "mstnam02": "Friesach-St.Stefan, Bl 32431",
+                  "wert": 379.28,
+                  "zp": "2026-08-20",
+                  "daterr05": "1978-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw32431"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.418615739,
+                    47.106061999
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 319129,
+                  "mstnam02": "Graz 12, Bl  3343",
+                  "wert": 354.21,
+                  "zp": "2026-08-20",
+                  "daterr05": "1976-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw3343"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.002939923,
+                    47.335063097
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 318790,
+                  "mstnam02": "Brunn, Bl  2647",
+                  "wert": 567.84,
+                  "zp": "2026-06-22",
+                  "daterr05": "1969-08-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": true,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw2647"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.570394033,
+                    46.806026853
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 311522,
+                  "mstnam02": "Untergralla, Bl  3810",
+                  "wert": 269.56,
+                  "zp": "2026-08-20",
+                  "daterr05": "1962-04-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw3810"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.243436129,
+                    47.972896252
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 362236,
+                  "mstnam02": "Straßwalchen Markt, KB1/21",
+                  "wert": 503.74,
+                  "zp": "2026-08-19",
+                  "daterr05": "2021-04-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=362236"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.816491858,
+                    47.28553549
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 361469,
+                  "mstnam02": "Hundsdorf, GW 25",
+                  "wert": 749.74,
+                  "zp": "2026-08-20",
+                  "daterr05": "2016-02-23T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=361469"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.183022593,
+                    47.843334992
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 361410,
+                  "mstnam02": "Plainfeld / Hof, Bl 1",
+                  "wert": 590.71,
+                  "zp": "2026-08-19",
+                  "daterr05": "2016-03-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=361410"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.191559284,
+                    47.33973202
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 361386,
+                  "mstnam02": "Reindorf, S 407",
+                  "wert": 561.81,
+                  "zp": "2026-08-20",
+                  "daterr05": "2016-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=361386"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.214996362,
+                    47.384228215
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 361360,
+                  "mstnam02": "Urreiting, P 122",
+                  "wert": 548.07,
+                  "zp": "2026-08-20",
+                  "daterr05": "2016-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=361360"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.109053407,
+                    48.294834523
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 319392,
+                  "mstnam02": "Tulbing, Bl 231",
+                  "wert": 173.14,
+                  "zp": "2026-08-20",
+                  "daterr05": "1976-11-01T00:00:00",
+                  "farbcode": "#58FA58",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/319392/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.892079704,
+                    46.773103492
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 353185,
+                  "mstnam02": "Unterkarla, Bl  3978",
+                  "wert": 235.19,
+                  "zp": "2026-08-20",
+                  "daterr05": "2006-07-21T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw3978"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.286397548,
+                    47.133851115
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 343715,
+                  "mstnam02": "Frojach, Bl  2191",
+                  "wert": 753.8,
+                  "zp": "2026-08-20",
+                  "daterr05": "2005-07-07T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw2191"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.920320653,
+                    47.076346408
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 343681,
+                  "mstnam02": "Predlitz, Bl  2001",
+                  "wert": 909.79,
+                  "zp": "2026-08-20",
+                  "daterr05": "2006-04-25T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw2001"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.982976867,
+                    46.948028038
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 343608,
+                  "mstnam02": "Johnsdorf, Bl  5251",
+                  "wert": 262.26,
+                  "zp": "2026-08-20",
+                  "daterr05": "1998-04-08T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw5251"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.733180535,
+                    47.082469181
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 343566,
+                  "mstnam02": "Pirching, Bl  5149",
+                  "wert": 336.21,
+                  "zp": "2026-08-20",
+                  "daterr05": "1998-04-07T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw5149"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.66029727,
+                    47.19971563
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 349472,
+                  "mstnam02": "Reggerstätten, Bl  5121",
+                  "wert": 428.7,
+                  "zp": "2026-08-20",
+                  "daterr05": "1998-03-31T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&stationsstatus=%5Bonline%5D&ansichtstyp=liste&dswid=401&hdnr=uw5121"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.831007333,
+                    47.200919226
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 343459,
+                  "mstnam02": "Kaibing, Bl  5616",
+                  "wert": 353.96,
+                  "zp": "2026-08-20",
+                  "daterr05": "2000-10-03T00:00:00",
+                  "farbcode": "#58FA58",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw5616"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.867331193,
+                    47.161505476
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 343418,
+                  "mstnam02": "Kroisbach, Bl  5637",
+                  "wert": 326.67,
+                  "zp": "2026-08-20",
+                  "daterr05": "2000-10-03T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw5637"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.097104893,
+                    47.052396341
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 343343,
+                  "mstnam02": "Fürstenfeld, Bl  5831",
+                  "wert": 247.25,
+                  "zp": "2026-08-20",
+                  "daterr05": "2000-10-03T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw5831"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.264633498,
+                    46.762454116
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 340422,
+                  "mstnam02": "Moos, Bl  4313",
+                  "wert": 346.31,
+                  "zp": "2026-08-20",
+                  "daterr05": "1997-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw4313"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.29571256,
+                    46.974762086
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 340042,
+                  "mstnam02": "Neudorf bei Mooskirchen, Bl  4012",
+                  "wert": 334.12,
+                  "zp": "2026-08-20",
+                  "daterr05": "1995-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw4012"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.992262289,
+                    48.142702587
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 331264,
+                  "mstnam02": "Wolfsthal, Bl  350",
+                  "wert": 135.21,
+                  "zp": "2026-08-18",
+                  "daterr05": "1984-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/331264/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.886895944,
+                    47.416510401
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 327817,
+                  "mstnam02": "Andelsbuch, Bl 30.1.03",
+                  "wert": 605.11,
+                  "zp": "2026-08-20",
+                  "daterr05": "1985-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=327817&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.385233098,
+                    46.697033473
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 356659,
+                  "mstnam02": "Saggau, Bl  4363",
+                  "wert": 300.83,
+                  "zp": "2026-08-20",
+                  "daterr05": "2008-04-10T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw4363"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.44600916,
+                    47.57864318
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 356477,
+                  "mstnam02": "Admont, Bl  1562",
+                  "wert": 622.89,
+                  "zp": "2026-08-20",
+                  "daterr05": "2007-03-22T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw1562"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.904325903,
+                    47.432465066
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 356386,
+                  "mstnam02": "Gröbming, Bl   1141",
+                  "wert": 669.44,
+                  "zp": "2026-08-20",
+                  "daterr05": "2007-03-22T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw1141"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.505993367,
+                    47.018410739
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 356295,
+                  "mstnam02": "Mühlen, Bl   6050",
+                  "wert": 928.35,
+                  "zp": "2026-08-20",
+                  "daterr05": "1991-11-28T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw6050"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.070436965,
+                    47.433614028
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 356261,
+                  "mstnam02": "Pinggau, Bl 59993",
+                  "wert": 489.64,
+                  "zp": "2026-08-20",
+                  "daterr05": "2009-08-13T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw59993"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.782154275,
+                    46.990895054
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 343533,
+                  "mstnam02": "Fladnitz im Raabtal, Bl  5167",
+                  "wert": 298.58,
+                  "zp": "2026-08-20",
+                  "daterr05": "2005-11-04T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw5167"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.014676165,
+                    46.663705055
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 349282,
+                  "mstnam02": "Kellerdorf, Bl  3937",
+                  "wert": 199.13,
+                  "zp": "2026-08-20",
+                  "daterr05": "1993-03-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw3937"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.048532514,
+                    47.129812098
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 343897,
+                  "mstnam02": "Blumau, Bl  5993",
+                  "wert": 270.69,
+                  "zp": "2026-08-20",
+                  "daterr05": "2006-07-21T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw5993"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.983967911,
+                    47.187018897
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 343863,
+                  "mstnam02": "Neustift, Bl  5987",
+                  "wert": 294.52,
+                  "zp": "2026-07-01",
+                  "daterr05": "2006-08-08T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": true,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw5987"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.903861883,
+                    47.219989345
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 343830,
+                  "mstnam02": "Kaindorf, Bl 59821",
+                  "wert": 323.83,
+                  "zp": "2026-08-20",
+                  "daterr05": "2006-08-08T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw59821"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.196286018,
+                    47.434954963
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 358390,
+                  "mstnam02": "Westendorf, Bl 2",
+                  "wert": 727.7,
+                  "zp": "2026-08-20",
+                  "daterr05": "2010-11-22T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=358390"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.357655132,
+                    46.827770991
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 356907,
+                  "mstnam02": "Gussendorf, Bl  4226",
+                  "wert": 295.06,
+                  "zp": "2026-08-20",
+                  "daterr05": "2013-12-03T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw4226"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.430410097,
+                    47.511729186
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 356733,
+                  "mstnam02": "Bärndorf, Bl  1531",
+                  "wert": 685.01,
+                  "zp": "2026-08-20",
+                  "daterr05": "2011-08-04T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw1531"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.542809508,
+                    46.649487092
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 356709,
+                  "mstnam02": "Langegg, Bl  6211",
+                  "wert": 303.07,
+                  "zp": "2026-08-20",
+                  "daterr05": "2008-04-10T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw6211"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.042196692,
+                    47.339309962
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 343301,
+                  "mstnam02": "Wagendorf, Bl  5920",
+                  "wert": 377.95,
+                  "zp": "2026-08-20",
+                  "daterr05": "1998-05-05T00:00:00",
+                  "farbcode": "#58FA58",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw5920"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.497893645,
+                    47.53205383
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 332999,
+                  "mstnam02": "Wartberg, Bl  2985",
+                  "wert": 579.1,
+                  "zp": "2026-08-20",
+                  "daterr05": "1988-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw2985"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    13.190056795,
+                    47.47883257
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 361311,
+                  "mstnam02": "Werfen, P 603",
+                  "wert": 514.64,
+                  "zp": "2026-08-20",
+                  "daterr05": "2016-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Salzburg",
+                  "internet": "https://www.salzburg.gv.at/wasser/hydro/#/Grundwasser?station=361311"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.667397313,
+                    47.859412316
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 345009,
+                  "mstnam02": "Weyer, Bl KB10",
+                  "wert": 395.31,
+                  "zp": "2026-08-20",
+                  "daterr05": "2011-03-31T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/1175172/Weyer/Grundwasserstand"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.131384307,
+                    47.635596823
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 337428,
+                  "mstnam02": "Warth, Bl 462",
+                  "wert": 386.85,
+                  "zp": "2026-07-18",
+                  "daterr05": "2005-12-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": true,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/337428/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.740776561,
+                    48.156809056
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 337113,
+                  "mstnam02": "Wallsee, Blt 432",
+                  "wert": 227.74,
+                  "zp": "2026-08-20",
+                  "daterr05": "1992-07-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/337113/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.707101946,
+                    48.308536882
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 322842,
+                  "mstnam02": "Walpersdorf, Bl 246",
+                  "wert": 211.34,
+                  "zp": "2026-08-20",
+                  "daterr05": "1979-01-01T00:00:00",
+                  "farbcode": "#58FA58",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/322842/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.760173146,
+                    48.302514597
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 305300,
+                  "mstnam02": "Weikendorf-Remise, Bl",
+                  "wert": 145.92,
+                  "zp": "2026-08-20",
+                  "daterr05": "1955-01-22T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/305300/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.23064943,
+                    47.802190997
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 301929,
+                  "mstnam02": "Wr.Neustadt-Heizhaus, Bl",
+                  "wert": 256.93,
+                  "zp": "2026-08-20",
+                  "daterr05": "1951-11-12T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Niederösterreich",
+                  "internet": "https://www.noe.gv.at/wasserstand/#/de/Messstellen/Details/301929/Grundwasserspiegel/Monat"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.958090059,
+                    47.714648081
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 345686,
+                  "mstnam02": "Wallern im Bgld., Bl 161",
+                  "wert": 113.78,
+                  "zp": "2026-08-20",
+                  "daterr05": "2001-02-15T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/wallernbl161"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.753937738,
+                    47.55612337
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 327767,
+                  "mstnam02": "Hörbranz, Bl 40.1.07 A",
+                  "wert": 416.59,
+                  "zp": "2026-08-20",
+                  "daterr05": "1994-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=327767&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    10.367909856,
+                    47.260150614
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 346114,
+                  "mstnam02": "Bach-Schönau, Bl 3",
+                  "wert": 1054.91,
+                  "zp": "2026-08-20",
+                  "daterr05": "1995-07-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=346114"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    11.369212669,
+                    47.259598491
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 339994,
+                  "mstnam02": "Hötting, Blt 27",
+                  "wert": 572.79,
+                  "zp": "2026-08-19",
+                  "daterr05": "1993-12-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=339994"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.584981893,
+                    47.5802706
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 339945,
+                  "mstnam02": "Waidring, Bl 2",
+                  "wert": 753.38,
+                  "zp": "2026-08-20",
+                  "daterr05": "1993-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=339945"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    10.634184748,
+                    47.55186192
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 339606,
+                  "mstnam02": "Vils, Bl  1",
+                  "wert": 810.43,
+                  "zp": "2026-08-20",
+                  "daterr05": "1992-11-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=339606"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    10.721281656,
+                    47.498954444
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 339432,
+                  "mstnam02": "Reutte, Blt 16",
+                  "wert": 837.12,
+                  "zp": "2026-08-20",
+                  "daterr05": "1992-11-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=339432"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    10.622830068,
+                    47.435657663
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 334813,
+                  "mstnam02": "Weißenbach, Bl 1",
+                  "wert": 884.22,
+                  "zp": "2026-08-20",
+                  "daterr05": "1990-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=334813"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.873976918,
+                    46.789809115
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 334565,
+                  "mstnam02": "Lengberg, Bl 2 (Lavant, Bl 4)",
+                  "wert": 637.13,
+                  "zp": "2026-08-20",
+                  "daterr05": "1989-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=334565"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    11.692042635,
+                    47.335085386
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 334458,
+                  "mstnam02": "Vomp, Blt 1",
+                  "wert": 536.1,
+                  "zp": "2026-08-20",
+                  "daterr05": "1989-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=334458"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    11.203670838,
+                    47.277110361
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 330910,
+                  "mstnam02": "Inzing, Bl 2",
+                  "wert": 596.64,
+                  "zp": "2026-08-20",
+                  "daterr05": "1987-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=330910"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    11.262053662,
+                    47.385949378
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 330837,
+                  "mstnam02": "Scharnitz, Bl 3",
+                  "wert": 947.85,
+                  "zp": "2026-08-20",
+                  "daterr05": "1987-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=330837"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.82443195,
+                    46.814895153
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 330795,
+                  "mstnam02": "Dölsach, Bl  1",
+                  "wert": 650.12,
+                  "zp": "2026-08-20",
+                  "daterr05": "1987-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=330795"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.768314823,
+                    46.824015305
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 330670,
+                  "mstnam02": "Lienz, Bl 2",
+                  "wert": 657.83,
+                  "zp": "2026-08-20",
+                  "daterr05": "1986-01-01T00:00:00",
+                  "farbcode": "#58FA58",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=330670"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.407648957,
+                    47.663838379
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 330662,
+                  "mstnam02": "Kössen, Bl  2",
+                  "wert": 586.44,
+                  "zp": "2026-08-20",
+                  "daterr05": "1986-05-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=330662"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    11.84597277,
+                    47.416493349
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 330431,
+                  "mstnam02": "Münster, Bl  1",
+                  "wert": 517.05,
+                  "zp": "2026-08-20",
+                  "daterr05": "1982-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=330431"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    11.578114672,
+                    47.295623724
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 330274,
+                  "mstnam02": "Volders, Bl 2",
+                  "wert": 547.68,
+                  "zp": "2026-08-19",
+                  "daterr05": "1982-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=330274"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    14.670419448,
+                    47.720087767
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 356998,
+                  "mstnam02": "Altenmarkt, Br   1792",
+                  "wert": 412.65,
+                  "zp": "2026-08-14",
+                  "daterr05": "2012-10-09T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw1792"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.613388613,
+                    47.220980191
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 321315,
+                  "mstnam02": "Frastanz, Bl 02.31.05",
+                  "wert": 461.93,
+                  "zp": "2026-08-20",
+                  "daterr05": "1974-03-28T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=321315&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.565477382,
+                    47.276767288
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 309542,
+                  "mstnam02": "Nofels, Bl 01.32.24 A",
+                  "wert": 426.9,
+                  "zp": "2026-08-20",
+                  "daterr05": "1954-10-23T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=309542&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.577393845,
+                    47.293214052
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 309526,
+                  "mstnam02": "Meiningen, Bl 01.33.06",
+                  "wert": 423.89,
+                  "zp": "2026-08-19",
+                  "daterr05": "1954-11-27T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=309526&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.57952609,
+                    47.26249754
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 309393,
+                  "mstnam02": "Altenstadt, Bl 01.32.01 A",
+                  "wert": 428.35,
+                  "zp": "2026-08-19",
+                  "daterr05": "1954-11-12T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=309393&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.718772086,
+                    47.493582612
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 309385,
+                  "mstnam02": "Bregenz, Bl 50.1.09 B",
+                  "wert": 396.52,
+                  "zp": "2026-08-19",
+                  "daterr05": "1964-02-03T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=309385&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    10.755689699,
+                    47.450284401
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 358275,
+                  "mstnam02": "Heiterwang, Bl 2",
+                  "wert": 976.84,
+                  "zp": "2026-08-20",
+                  "daterr05": "2009-11-19T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=358275"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.545386801,
+                    46.757598291
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 342022,
+                  "mstnam02": "Anras, Bl 1",
+                  "wert": 927.25,
+                  "zp": "2026-08-20",
+                  "daterr05": "2009-05-06T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=342022"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.591612994,
+                    46.92397541
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 354209,
+                  "mstnam02": "Matrei i.O., Bl 2",
+                  "wert": 778.62,
+                  "zp": "2026-08-20",
+                  "daterr05": "2008-11-25T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=354209"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.678067717,
+                    46.868638841
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 354175,
+                  "mstnam02": "Ainet, Blt 1",
+                  "wert": 706.42,
+                  "zp": "2026-08-20",
+                  "daterr05": "2008-11-25T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=354175"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    11.321197811,
+                    47.115761299
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 354068,
+                  "mstnam02": "Neustift, Bl 1",
+                  "wert": 969.94,
+                  "zp": "2026-08-20",
+                  "daterr05": "2007-11-20T00:00:00",
+                  "farbcode": "#58FA58",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=354068"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.373873862,
+                    46.740990019
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 342899,
+                  "mstnam02": "Arnbach, Bl  2",
+                  "wert": 1105.56,
+                  "zp": "2026-08-20",
+                  "daterr05": "2005-06-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=342899"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    10.582213883,
+                    47.154536763
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 342741,
+                  "mstnam02": "Zams, Blt 6",
+                  "wert": 756.21,
+                  "zp": "2026-08-20",
+                  "daterr05": "2005-12-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=342741"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    10.95267867,
+                    47.079152776
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 342618,
+                  "mstnam02": "Längenfeld-Oberried, Bl 1",
+                  "wert": 1160.24,
+                  "zp": "2026-08-20",
+                  "daterr05": "2003-12-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=342618"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    10.679530679,
+                    47.206476191
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 346700,
+                  "mstnam02": "Mils-Au, Bl 1 (122)",
+                  "wert": 725,
+                  "zp": "2026-08-20",
+                  "daterr05": "2001-10-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=346700"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.457556425,
+                    46.959522211
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 310821,
+                  "mstnam02": "Zettling, Br  3552",
+                  "wert": 317.93,
+                  "zp": "2026-08-20",
+                  "daterr05": "1959-12-09T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw3552"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    16.961289152,
+                    47.964423096
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 335885,
+                  "mstnam02": "Zurndorf, Bl 56",
+                  "wert": 145.44,
+                  "zp": "2026-08-20",
+                  "daterr05": "1994-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Burgenland",
+                  "internet": "https://wasser.bgld.gv.at/hydrographie/das-grundwasser/zurndorf-bl-56"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.606303262,
+                    47.270417495
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 327635,
+                  "mstnam02": "Altenstadt, Bl 01.32.60",
+                  "wert": 428.64,
+                  "zp": "2026-08-20",
+                  "daterr05": "1982-03-30T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=327635&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.577567981,
+                    47.237445152
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 327619,
+                  "mstnam02": "Tosters, Bl 01.32.53 A",
+                  "wert": 435.99,
+                  "zp": "2026-08-20",
+                  "daterr05": "1982-04-06T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=327619&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.706202779,
+                    47.503694688
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 322255,
+                  "mstnam02": "Bregenz, Bl 50.1.12",
+                  "wert": 395.63,
+                  "zp": "2026-08-20",
+                  "daterr05": "1978-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=322255&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.697770752,
+                    47.492031705
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 322131,
+                  "mstnam02": "Hard, Bl 50.2.13",
+                  "wert": 396.45,
+                  "zp": "2026-08-20",
+                  "daterr05": "1978-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=322131&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.708887477,
+                    47.480701296
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 322115,
+                  "mstnam02": "Lauterach, Bl 50.2.10 A",
+                  "wert": 400.37,
+                  "zp": "2026-08-20",
+                  "daterr05": "1978-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=322115&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.738274593,
+                    47.483950733
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 322099,
+                  "mstnam02": "Wolfurt, Bl 50.2.05 A",
+                  "wert": 405.58,
+                  "zp": "2026-08-20",
+                  "daterr05": "1978-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=322099&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.703525736,
+                    47.194075911
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 321562,
+                  "mstnam02": "Nenzing, Bl 04.30.16 B",
+                  "wert": 495.15,
+                  "zp": "2026-08-19",
+                  "daterr05": "1974-11-11T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=321562&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.771231027,
+                    47.186536888
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 321521,
+                  "mstnam02": "Ludesch, Bl 06.36.08",
+                  "wert": 518.46,
+                  "zp": "2026-08-19",
+                  "daterr05": "1977-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=321521&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    11.702717522,
+                    47.540050317
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 360669,
+                  "mstnam02": "Achenkirch, Bl10",
+                  "wert": 893.79,
+                  "zp": "2026-08-20",
+                  "daterr05": "2015-08-19T00:00:00",
+                  "farbcode": "#FFFFFF",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=360669"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    11.080759534,
+                    47.303226901
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 359166,
+                  "mstnam02": "Telfs, Blt 17",
+                  "wert": 616.68,
+                  "zp": "2026-08-20",
+                  "daterr05": "2011-12-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=359166"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    10.198226241,
+                    46.972326366
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 359018,
+                  "mstnam02": "Galtür, Bl 2",
+                  "wert": 1544.95,
+                  "zp": "2026-08-20",
+                  "daterr05": "2011-11-08T00:00:00",
+                  "farbcode": "#58FA58",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=359018"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    10.374633947,
+                    47.150466373
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 359026,
+                  "mstnam02": "Pettneu, Bl 4",
+                  "wert": 1162.27,
+                  "zp": "2026-08-20",
+                  "daterr05": "2011-11-09T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Tirol",
+                  "internet": "https://hydro.tirol.gv.at/#/Grundwasserstand?station=359026"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.716589978,
+                    46.803394381
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 353292,
+                  "mstnam02": "Mettersdorf, Bl 39541",
+                  "wert": 269.8,
+                  "zp": "2026-08-20",
+                  "daterr05": "2006-07-24T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Steiermark",
+                  "internet": "https://egov.stmk.gv.at/at.gv.stmk.hydavis-p/pub/praesentation/index.xhtml?messcode=3101&ansichtstyp=liste&stationsstatus=%5Bonline%5D&hdnr=uw39541"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    12.906691241,
+                    48.167561976
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 362418,
+                  "mstnam02": "Überackern, W14",
+                  "wert": 371.02,
+                  "zp": "2026-08-19",
+                  "daterr05": "1990-10-30T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Oberösterreich",
+                  "internet": "https://hydro.ooe.gv.at/#/overview/Grundwasserstand/station/1078625/%C3%9Cberackern/Grundwasserstand"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    10.144568571,
+                    47.313291721
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 347435,
+                  "mstnam02": "Mittelberg, Bl 90.1.02",
+                  "wert": 1135.62,
+                  "zp": "2026-08-20",
+                  "daterr05": "1999-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=347435&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.849845555,
+                    47.131765418
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 347179,
+                  "mstnam02": "Lorüns, Bl 08.27.11",
+                  "wert": 577.15,
+                  "zp": "2026-08-20",
+                  "daterr05": "1980-06-16T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=347179&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    10.06237506,
+                    46.969180372
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 332437,
+                  "mstnam02": "Gaschurn, Bl 22.00.05",
+                  "wert": 1038.57,
+                  "zp": "2026-08-20",
+                  "daterr05": "1991-01-01T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=332437&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.917105235,
+                    47.073710592
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 332387,
+                  "mstnam02": "Schruns, Bl 16.04.14",
+                  "wert": 658.88,
+                  "zp": "2026-08-20",
+                  "daterr05": "1990-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=332387&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.953235415,
+                    47.346711418
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 332304,
+                  "mstnam02": "Schnepfau, Bl 30.3.09",
+                  "wert": 726.89,
+                  "zp": "2026-08-20",
+                  "daterr05": "1990-02-14T00:00:00",
+                  "farbcode": "#FE9A2E",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=332304&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.86667499,
+                    47.141705842
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 332015,
+                  "mstnam02": "Stallehr, Bl 60.1.01",
+                  "wert": 587.38,
+                  "zp": "2026-08-20",
+                  "daterr05": "1987-05-11T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=332015&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.640762123,
+                    47.459468581
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 328450,
+                  "mstnam02": "Höchst, Bl 50.2.27",
+                  "wert": 397.4,
+                  "zp": "2026-08-20",
+                  "daterr05": "1982-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=328450&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.727326774,
+                    47.414875798
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 328179,
+                  "mstnam02": "Dornbirn, Bl 50.3.05",
+                  "wert": 423.13,
+                  "zp": "2026-08-20",
+                  "daterr05": "1980-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=328179&Status=yes"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    9.867736094,
+                    47.38760159
+                  ]
+                },
+                "properties": {
+                  "hzbnr": 327874,
+                  "mstnam02": "Andelsbuch, Bl 30.2.02",
+                  "wert": 608.96,
+                  "zp": "2026-08-20",
+                  "daterr05": "1986-01-01T00:00:00",
+                  "farbcode": "#DF0101",
+                  "transp": false,
+                  "bundesland": "Vorarlberg",
+                  "internet": "https://vowis.vorarlberg.at/StationsInfo/_Grundwasser/gwStation.aspx?hzbnr=327874&Status=yes"
+                }
+              }
+            ]
+          }
