@@ -8,10 +8,9 @@ from homeassistant.helpers import selector
 from .const import (
     CONF_SELECTED_STATIONS,
     DOMAIN,
-    GROUNDWATER_STATIONS,
     INTEGRATION_NAME,
-    RIVER_STATIONS,
 )
+from .stations import GROUNDWATER_STATIONS, RIVER_STATIONS
 
 ALL_STATIONS = [*RIVER_STATIONS, *GROUNDWATER_STATIONS]
 
@@ -19,7 +18,7 @@ ALL_STATIONS = [*RIVER_STATIONS, *GROUNDWATER_STATIONS]
 def station_label(station: dict[str, int | str]) -> str:
     """Return the labeled station name for a station selector."""
     station_type = "Groundwater" if station in GROUNDWATER_STATIONS else "River"
-    name = str(station["suffix"]).replace("_", " ").title()
+    name = str(station.get("name", str(station["suffix"]).replace("_", " ").title()))
     return f"{station_type}: {name} ({station['hzbnr']})"
 
 
@@ -112,7 +111,7 @@ class EhydConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                                 }
                                 for station in available_stations
                             ],
-                            mode=selector.SelectSelectorMode.LIST,
+                            mode=selector.SelectSelectorMode.DROPDOWN,
                         )
                     )
                 }
@@ -186,7 +185,7 @@ class EhydOptionsFlowHandler(config_entries.OptionsFlow):
                                 }
                                 for station in available
                             ],
-                            mode=selector.SelectSelectorMode.LIST,
+                            mode=selector.SelectSelectorMode.DROPDOWN,
                         )
                     )
                 }

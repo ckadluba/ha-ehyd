@@ -5,8 +5,8 @@ from types import SimpleNamespace
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from custom_components.ehyd.config_flow import station_is_configured, station_label
-from custom_components.ehyd.const import GROUNDWATER_STATIONS, RIVER_STATIONS
 from custom_components.ehyd.const import DOMAIN
+from custom_components.ehyd.stations import GROUNDWATER_STATIONS, RIVER_STATIONS
 from custom_components.ehyd.sensor import (
     GroundwaterSensor,
     GroundwaterStationDataExtractor,
@@ -36,9 +36,18 @@ def test_station_is_configured_detects_existing_station() -> None:
 
 def test_station_labels_identify_station_type() -> None:
     assert station_label(RIVER_STATIONS[0]) == ("River: Schwechat Hallenbad (208157)")
-    assert station_label(GROUNDWATER_STATIONS[0]) == (
-        "Groundwater: Leobersdorf Bl 451 (300699)"
+    leobersdorf = next(
+        station for station in GROUNDWATER_STATIONS if station["hzbnr"] == 300699
     )
+    assert station_label(leobersdorf) == (
+        "Groundwater: Leobersdorf, Bl 451 (300699)"
+    )
+
+
+def test_all_groundwater_stations_have_unique_identifiers() -> None:
+    assert len(GROUNDWATER_STATIONS) == 229
+    assert len({station["hzbnr"] for station in GROUNDWATER_STATIONS}) == 229
+    assert len({station["suffix"] for station in GROUNDWATER_STATIONS}) == 229
 
 
 def test_get_enabled_station_configs_defaults_to_empty() -> None:
