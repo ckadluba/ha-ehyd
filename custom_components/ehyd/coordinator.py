@@ -18,7 +18,6 @@ from .const import (
 )
 
 if TYPE_CHECKING:
-    from homeassistant.config_entries import ConfigEntry
     from homeassistant.core import HomeAssistant
 
 _LOGGER = logging.getLogger(__name__)
@@ -51,6 +50,12 @@ class EhydDataUpdateCoordinator(DataUpdateCoordinator):
         )
 
         try:
+            _LOGGER.debug(
+                "EhydDataUpdateCoordinator update fetch_river=%s, fetch_groundwater=%s",
+                fetch_river,
+                fetch_groundwater,
+            )
+
             await api.async_update(
                 fetch_river=fetch_river,
                 fetch_groundwater=fetch_groundwater,
