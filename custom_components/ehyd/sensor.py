@@ -318,7 +318,6 @@ def river_station_metadata(
             ICON_GROUNDWATER_SENSOR,
             "water_level",
             unit,
-            SensorDeviceClass.DISTANCE,
         )
 
     return StationSensorMetadata(

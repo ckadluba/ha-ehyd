@@ -3,7 +3,9 @@
 DOMAIN = "ehyd"
 DATA_COORDINATOR = "coordinator"
 INTEGRATION_NAME = "eHYD"
-INTEGRATION_DEVICE_MANUFACTURER = "Christian Kadluba (data provided by ehyd.gv.at)"
+INTEGRATION_DEVICE_MANUFACTURER = (
+    "Christian Kadluba (data provided by ehyd.gv.at; unverified raw data)"
+)
 PLATFORMS = ["sensor"]
 
 RIVER_STATION_NAMETAG = "discharge"

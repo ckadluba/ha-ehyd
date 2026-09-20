@@ -10,3 +10,7 @@
 
 - Test code is excluded from this Ruff check; do not use the test directory as
   the target for this required validation.
+
+- After every code change, compare the implementation with `README.md` and
+  update the README when the documented behavior, configuration, sensor
+  metadata, or other user-visible behavior has changed.
