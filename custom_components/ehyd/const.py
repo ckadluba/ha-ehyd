@@ -15,6 +15,9 @@ GROUNDWATER_STATION_UNIT_OF_MEASUREMENT = "m a.s.l."
 DEFAULT_INTERVAL = 1  # hours, fixed polling interval
 
 CONF_SELECTED_STATIONS = "selected_stations"
+CONF_STATION_TYPE = "station_type"
+STATION_TYPE_GROUNDWATER = "groundwater"
+STATION_TYPE_RIVER = "river"
 COORDINATOR = "coordinator"
 SETUP_LOCK = "setup_lock"
 

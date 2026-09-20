@@ -7,12 +7,22 @@ from homeassistant.helpers import selector
 
 from .const import (
     CONF_SELECTED_STATIONS,
+    CONF_STATION_TYPE,
     DOMAIN,
     INTEGRATION_NAME,
+    STATION_TYPE_GROUNDWATER,
+    STATION_TYPE_RIVER,
 )
 from .stations import GROUNDWATER_STATIONS, RIVER_STATIONS
 
 ALL_STATIONS = [*RIVER_STATIONS, *GROUNDWATER_STATIONS]
+
+
+def stations_for_type(station_type: str) -> list[dict[str, int | str]]:
+    """Return stations belonging to a station type."""
+    return (
+        RIVER_STATIONS if station_type == STATION_TYPE_RIVER else GROUNDWATER_STATIONS
+    )
 
 
 def station_label(station: dict[str, int | str]) -> str:
@@ -66,7 +76,28 @@ class EhydConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         return EhydOptionsFlowHandler()
 
     async def async_step_user(self, user_input: dict[str, str] | None = None):  # noqa: ANN201
-        """Choose a station when creating the integration."""
+        """Choose the station type when creating the integration."""
+        if user_input is not None:
+            self._selected_station_type = user_input[CONF_STATION_TYPE]
+            return await self.async_step_station()
+
+        return self.async_show_form(
+            step_id="user",
+            data_schema=vol.Schema(
+                {
+                    vol.Required(CONF_STATION_TYPE): vol.In(
+                        {
+                            STATION_TYPE_RIVER: "River station",
+                            STATION_TYPE_GROUNDWATER: "Groundwater station",
+                        }
+                    )
+                }
+            ),
+        )
+
+    async def async_step_station(self, user_input: dict[str, str] | None = None):  # noqa: ANN201
+        """Choose a station of the selected type."""
+        station_type = self._selected_station_type
         if user_input is not None:
             station_suffix = user_input["station"]
             if station_is_configured(self._async_current_entries(), station_suffix):
@@ -78,7 +109,9 @@ class EhydConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             station = next(
                 item for item in ALL_STATIONS if item["suffix"] == station_suffix
             )
-            title = station["suffix"].replace("_", " ").title()
+            title = str(
+                station.get("name", str(station["suffix"]).replace("_", " ").title())
+            )
             return self.async_create_entry(
                 title=title,
                 data={CONF_SELECTED_STATIONS: [station_suffix]},
@@ -94,12 +127,15 @@ class EhydConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         }
         available_stations = [
             station
-            for station in ALL_STATIONS
+            for station in stations_for_type(station_type)
             if station["suffix"] not in existing_station_suffixes
         ]
 
+        if not available_stations:
+            return self.async_abort(reason="all_stations_added")
+
         return self.async_show_form(
-            step_id="user",
+            step_id="station",
             data_schema=vol.Schema(
                 {
                     vol.Required("station"): selector.SelectSelector(
@@ -137,7 +173,7 @@ class EhydOptionsFlowHandler(config_entries.OptionsFlow):
         """Show the available actions for this config entry."""
         if user_input is not None:
             if user_input.get("action") == "add_station":
-                return await self.async_step_add_station()
+                return await self.async_step_station_type()
             return self.async_create_entry(
                 title=INTEGRATION_NAME,
                 data={CONF_SELECTED_STATIONS: self._get_selected_stations()},
@@ -154,11 +190,33 @@ class EhydOptionsFlowHandler(config_entries.OptionsFlow):
             ),
         )
 
+    async def async_step_station_type(self, user_input: dict[str, str] | None = None):  # noqa: ANN201
+        """Choose the type of station to add."""
+        if user_input is not None:
+            self._selected_station_type = user_input[CONF_STATION_TYPE]
+            return await self.async_step_add_station()
+
+        return self.async_show_form(
+            step_id="station_type",
+            data_schema=vol.Schema(
+                {
+                    vol.Required(CONF_STATION_TYPE): vol.In(
+                        {
+                            STATION_TYPE_RIVER: "River station",
+                            STATION_TYPE_GROUNDWATER: "Groundwater station",
+                        }
+                    )
+                }
+            ),
+        )
+
     async def async_step_add_station(self, user_input: dict[str, str] | None = None):  # noqa: ANN201
         """Choose a station to add as a service/device."""
         selected = self._get_selected_stations()
         available = [
-            station for station in ALL_STATIONS if station["suffix"] not in selected
+            station
+            for station in stations_for_type(self._selected_station_type)
+            if station["suffix"] not in selected
         ]
 
         if user_input is not None:

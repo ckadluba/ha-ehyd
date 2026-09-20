@@ -5,6 +5,7 @@
 
   ```sh
   ruff format custom_components/ehyd --check
+  ruff check custom_components/ehyd
   ```
 
 - Test code is excluded from this Ruff check; do not use the test directory as
