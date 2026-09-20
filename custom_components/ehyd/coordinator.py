@@ -13,9 +13,8 @@ from .const import (
     CONF_SELECTED_STATIONS,
     DEFAULT_INTERVAL,
     DOMAIN,
-    GROUNDWATER_STATIONS,
-    RIVER_STATIONS,
 )
+from .stations import GROUNDWATER_STATIONS, RIVER_STATIONS
 
 if TYPE_CHECKING:
     from homeassistant.config_entries import ConfigEntry
