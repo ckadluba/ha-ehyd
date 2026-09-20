@@ -18,9 +18,7 @@ ALL_STATIONS = [*RIVER_STATIONS, *GROUNDWATER_STATIONS]
 def station_label(station: dict[str, int | str]) -> str:
     """Return the labeled station name for a station selector."""
     station_type = "Groundwater" if station in GROUNDWATER_STATIONS else "River"
-    name = str(
-        station.get("name", str(station["suffix"]).replace("_", " ").title())
-    )
+    name = str(station.get("name", str(station["suffix"]).replace("_", " ").title()))
     return f"{station_type}: {name} ({station['hzbnr']})"
 
 
