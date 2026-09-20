@@ -1,5 +1,7 @@
 """Coordinator for the eHYD integration."""
 
+from __future__ import annotations
+
 import logging
 from datetime import timedelta
 from typing import TYPE_CHECKING
@@ -16,6 +18,7 @@ from .const import (
 )
 
 if TYPE_CHECKING:
+    from homeassistant.config_entries import ConfigEntry
     from homeassistant.core import HomeAssistant
 
 _LOGGER = logging.getLogger(__name__)
@@ -24,8 +27,13 @@ _LOGGER = logging.getLogger(__name__)
 class EhydDataUpdateCoordinator(DataUpdateCoordinator):
     """Coordinate data updates for the eHYD integration."""
 
-    def __init__(self, hass: HomeAssistant) -> None:
+    def __init__(
+        self, hass: HomeAssistant, config_entry: ConfigEntry | None = None
+    ) -> None:
         """Initialize the coordinator."""
+        self.hass = hass
+        self.config_entry = config_entry
+        self._fetched_types: set[str] = set()
         super().__init__(
             hass,
             _LOGGER,
@@ -36,7 +44,7 @@ class EhydDataUpdateCoordinator(DataUpdateCoordinator):
     async def _async_update_data(self) -> dict:
         """Fetch data from the upstream API."""
         api = EhydApi(self.hass)
-        selected = self._get_selected_stations()
+        selected = self._get_all_selected_stations()
         fetch_river = any(station["suffix"] in selected for station in RIVER_STATIONS)
         fetch_groundwater = any(
             station["suffix"] in selected for station in GROUNDWATER_STATIONS
@@ -57,18 +65,54 @@ class EhydDataUpdateCoordinator(DataUpdateCoordinator):
             msg = f"Error fetching eHYD data: {err}"
             raise UpdateFailed(msg) from err
 
+        self._fetched_types = {
+            station_type
+            for station_type, fetched in (
+                ("river", fetch_river),
+                ("groundwater", fetch_groundwater),
+            )
+            if fetched
+        }
         return api.raw_response or {}
 
-    def _get_selected_stations(self) -> set[str]:
-        """Return stations selected by all eHYD config entries."""
-        selected: set[str] = set()
-        for entry in self.hass.config_entries.async_entries(DOMAIN):
-            entry_options = getattr(entry, "options", {})
-            entry_data = getattr(entry, "data", {})
-            stations = entry_options.get(
-                CONF_SELECTED_STATIONS,
-                entry_data.get(CONF_SELECTED_STATIONS, []),
+    async def async_ensure_data(self) -> None:
+        """Fetch newly required station types when another entry is added."""
+        selected = self._get_all_selected_stations()
+        required_types = {
+            station_type
+            for station_type, stations in (
+                ("river", RIVER_STATIONS),
+                ("groundwater", GROUNDWATER_STATIONS),
             )
-            if isinstance(stations, list):
-                selected.update(stations)
+            if any(station["suffix"] in selected for station in stations)
+        }
+
+        if required_types - self._fetched_types:
+            await self.async_request_refresh()
+
+    def _get_all_selected_stations(self) -> list[str]:
+        """Return selected stations from all eHYD config entries."""
+        if hasattr(self.hass, "config_entries"):
+            entries = self.hass.config_entries.async_entries(DOMAIN)
+        elif self.config_entry is not None:
+            entries = [self.config_entry]
+        else:
+            entries = []
+
+        selected: list[str] = []
+        for config_entry in entries:
+            selected.extend(self._get_entry_selected_stations(config_entry))
         return selected
+
+    @staticmethod
+    def _get_entry_selected_stations(config_entry: ConfigEntry) -> list[str]:
+        """Return selected stations from one config entry."""
+        selected = config_entry.options.get(
+            CONF_SELECTED_STATIONS,
+            config_entry.data.get(CONF_SELECTED_STATIONS, []),
+        )
+        return selected if isinstance(selected, list) else []
+
+    def _get_selected_stations(self) -> set[str]:
+        """Return the union of stations selected in all config entries."""
+        return set(self._get_all_selected_stations())

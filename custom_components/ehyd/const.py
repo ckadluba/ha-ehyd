@@ -19,11 +19,13 @@ GROUNDWATER_STATIONS = [
     {"suffix": "langenzersdorf_br_2112", "hzbnr": 313221},
 ]
 GROUNDWATER_STATION_NAMETAG = "elevation"
-GROUNDWATER_STATION_UNIT_OF_MEASUREMENT = "m a.s.l"
+GROUNDWATER_STATION_UNIT_OF_MEASUREMENT = "m a.s.l."
 
 DEFAULT_INTERVAL = 1  # hours, fixed polling interval
 
 CONF_SELECTED_STATIONS = "selected_stations"
+COORDINATOR = "coordinator"
+SETUP_LOCK = "setup_lock"
 
 ICON_RIVER_SENSOR = "mdi:waves-arrow-up"
 ICON_GROUNDWATER_SENSOR = "mdi:altimeter"

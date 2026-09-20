@@ -1,10 +1,11 @@
 """The eHYD integration component for Home Assistant."""
 
+import asyncio
 from typing import TYPE_CHECKING
 
 from homeassistant.helpers import config_validation as cv
 
-from .const import DATA_COORDINATOR, DOMAIN, PLATFORMS
+from .const import COORDINATOR, DOMAIN, PLATFORMS, SETUP_LOCK
 from .coordinator import EhydDataUpdateCoordinator
 
 if TYPE_CHECKING:
@@ -23,14 +24,22 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:  # noqa: ARG00
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up eHYD from a config entry."""
-    domain_data = hass.data.setdefault(DOMAIN, {})
-    coordinator = domain_data.get(DATA_COORDINATOR)
-    if coordinator is None:
-        coordinator = EhydDataUpdateCoordinator(hass)
-        await coordinator.async_config_entry_first_refresh()
-        domain_data[DATA_COORDINATOR] = coordinator
+    hass.data.setdefault(DOMAIN, {})
+    domain_data = hass.data[DOMAIN]
+    # Prevent parallel config-entry setup from creating multiple coordinators.
+    setup_lock = domain_data.setdefault(SETUP_LOCK, asyncio.Lock())
 
-    domain_data[entry.entry_id] = coordinator
+    async with setup_lock:
+        coordinator = domain_data.get(COORDINATOR)
+
+        if coordinator is None:
+            coordinator = EhydDataUpdateCoordinator(hass)
+            await coordinator.async_config_entry_first_refresh()
+            domain_data[COORDINATOR] = coordinator
+        elif hasattr(coordinator, "async_ensure_data"):
+            await coordinator.async_ensure_data()
+
+        domain_data[entry.entry_id] = coordinator
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     entry.async_on_unload(entry.add_update_listener(async_reload_entry))
@@ -43,8 +52,14 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     if unload_ok:
         domain_data = hass.data[DOMAIN]
         domain_data.pop(entry.entry_id, None)
-        if not any(key != DATA_COORDINATOR for key in domain_data):
-            domain_data.pop(DATA_COORDINATOR, None)
+        remaining_entries = [
+            key for key in domain_data if key not in {COORDINATOR, SETUP_LOCK}
+        ]
+        if not remaining_entries:
+            coordinator = domain_data.pop(COORDINATOR, None)
+            if coordinator is not None and hasattr(coordinator, "async_shutdown"):
+                await coordinator.async_shutdown()
+            domain_data.pop(SETUP_LOCK, None)
     return unload_ok
 
 

@@ -157,6 +157,6 @@ def test_groundwater_station_sensor_uses_elevation_metadata() -> None:
     assert extractor.get_native_value() == 231.4
     assert sensor.unique_id == "ehyd_leobersdorf_bl_451_elevation"
     assert sensor.entity_id == "sensor.ehyd_leobersdorf_bl_451_elevation"
-    assert sensor.native_unit_of_measurement == "m a.s.l"
-    assert sensor.device_class == "distance"
+    assert sensor.native_unit_of_measurement == "m a.s.l."
+    assert sensor.device_class is None
     assert sensor.icon == "mdi:altimeter"

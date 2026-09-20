@@ -20,6 +20,7 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from custom_components.ehyd.const import (
     CONF_SELECTED_STATIONS,
+    COORDINATOR,
     DOMAIN,
     GROUNDWATER_STATION_NAMETAG,
     GROUNDWATER_STATION_UNIT_OF_MEASUREMENT,
@@ -73,7 +74,9 @@ async def async_setup_entry(
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up eHYD sensors for a config entry."""
-    coordinator = hass.data[DOMAIN][config_entry.entry_id]
+    coordinator = hass.data[DOMAIN].get(COORDINATOR)
+    if coordinator is None:
+        coordinator = hass.data[DOMAIN][config_entry.entry_id]
 
     sensors: list[StationSensor] = [
         (
@@ -292,7 +295,6 @@ class GroundwaterSensor(StationSensor):
                 ICON_GROUNDWATER_SENSOR,
                 GROUNDWATER_STATION_NAMETAG,
                 GROUNDWATER_STATION_UNIT_OF_MEASUREMENT,
-                SensorDeviceClass.DISTANCE,
             ),
         )
 
