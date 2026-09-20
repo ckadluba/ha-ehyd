@@ -16,7 +16,10 @@ from homeassistant.components.sensor import (
     SensorStateClass,
 )
 from homeassistant.helpers.device_registry import DeviceEntryType, DeviceInfo
-from homeassistant.helpers.update_coordinator import CoordinatorEntity
+from homeassistant.helpers.update_coordinator import (
+    CoordinatorEntity,
+    DataUpdateCoordinator,
+)
 
 from custom_components.ehyd.const import (
     CONF_SELECTED_STATIONS,
@@ -265,11 +268,11 @@ class RiverStationSensor(StationSensor):
 
     def __init__(
         self,
-        coordinator,
+        coordinator: DataUpdateCoordinator,
         station_name: str,
         hzbnr: int,
         station: dict[str, int | str] | None = None,
-    ) -> None:  # noqa: ANN001
+    ) -> None:
         """Initialize the sensor entity."""
         station = station or {
             "parameter": "Q",
