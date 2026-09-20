@@ -53,9 +53,7 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         domain_data = hass.data[DOMAIN]
         domain_data.pop(entry.entry_id, None)
         remaining_entries = [
-            key
-            for key in domain_data
-            if key not in {COORDINATOR, SETUP_LOCK}
+            key for key in domain_data if key not in {COORDINATOR, SETUP_LOCK}
         ]
         if not remaining_entries:
             coordinator = domain_data.pop(COORDINATOR, None)
