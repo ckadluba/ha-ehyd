@@ -101,14 +101,18 @@ class EhydDataUpdateCoordinator(DataUpdateCoordinator):
 
         selected: list[str] = []
         for config_entry in entries:
-            selected.extend(self._get_selected_stations(config_entry))
+            selected.extend(self._get_entry_selected_stations(config_entry))
         return selected
 
     @staticmethod
-    def _get_selected_stations(config_entry: ConfigEntry) -> list[str]:
+    def _get_entry_selected_stations(config_entry: ConfigEntry) -> list[str]:
         """Return selected stations from one config entry."""
         selected = config_entry.options.get(
             CONF_SELECTED_STATIONS,
             config_entry.data.get(CONF_SELECTED_STATIONS, []),
         )
         return selected if isinstance(selected, list) else []
+
+    def _get_selected_stations(self) -> set[str]:
+        """Return the union of stations selected in all config entries."""
+        return set(self._get_all_selected_stations())
