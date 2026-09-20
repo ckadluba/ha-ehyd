@@ -82,7 +82,10 @@ async def async_setup_entry(
             GroundwaterSensor(coordinator, str(item["suffix"]), int(item["hzbnr"]))
             if item in GROUNDWATER_STATIONS
             else RiverStationSensor(
-                coordinator, str(item["suffix"]), int(item["hzbnr"])
+                coordinator,
+                str(item["suffix"]),
+                int(item["hzbnr"]),
+                station=item,
             )
         )
         for item in get_enabled_station_configs(config_entry)
@@ -260,12 +263,23 @@ class RiverStationSensor(StationSensor):
     param hzbnr: The numeric ID for the river station according to the API response.
     """
 
-    def __init__(self, coordinator, station_name: str, hzbnr: int) -> None:  # noqa: ANN001
+    def __init__(
+        self,
+        coordinator,
+        station_name: str,
+        hzbnr: int,
+        station: dict[str, int | str] | None = None,
+    ) -> None:  # noqa: ANN001
         """Initialize the sensor entity."""
+        station = station or {
+            "parameter": "Q",
+            "unit": RIVER_STATION_UNIT_OF_MEASUREMENT,
+        }
         super().__init__(
             coordinator,
             RiverStationDataExtractor(coordinator, hzbnr),
             station_name,
+            metadata=river_station_metadata(station),
         )
 
         self.hzbnr = hzbnr
@@ -279,6 +293,36 @@ class RiverStationSensor(StationSensor):
             station_name,
             hzbnr,
         )
+
+
+def river_station_metadata(
+    station: dict[str, int | str],
+) -> StationSensorMetadata:
+    """Return sensor metadata for a river station's measured parameter."""
+    parameter = station.get("parameter")
+    unit = str(station.get("unit") or RIVER_STATION_UNIT_OF_MEASUREMENT)
+
+    if parameter == "Q":
+        return StationSensorMetadata(
+            ICON_RIVER_SENSOR,
+            RIVER_STATION_NAMETAG,
+            unit,
+            SensorDeviceClass.VOLUME_FLOW_RATE,
+        )
+
+    if unit == "cm":
+        return StationSensorMetadata(
+            ICON_GROUNDWATER_SENSOR,
+            "water_level",
+            unit,
+            SensorDeviceClass.DISTANCE,
+        )
+
+    return StationSensorMetadata(
+        ICON_GROUNDWATER_SENSOR,
+        GROUNDWATER_STATION_NAMETAG,
+        GROUNDWATER_STATION_UNIT_OF_MEASUREMENT,
+    )
 
 
 class GroundwaterSensor(StationSensor):

@@ -35,7 +35,10 @@ def test_station_is_configured_detects_existing_station() -> None:
 
 
 def test_station_labels_identify_station_type() -> None:
-    assert station_label(RIVER_STATIONS[0]) == ("River: Schwechat Hallenbad (208157)")
+    schwechat = next(
+        station for station in RIVER_STATIONS if station["hzbnr"] == 208157
+    )
+    assert station_label(schwechat) == ("River: Schwechat (Hallenbad) (208157)")
     leobersdorf = next(
         station for station in GROUNDWATER_STATIONS if station["hzbnr"] == 300699
     )
@@ -48,6 +51,12 @@ def test_all_groundwater_stations_have_unique_identifiers() -> None:
     assert len(GROUNDWATER_STATIONS) == 229
     assert len({station["hzbnr"] for station in GROUNDWATER_STATIONS}) == 229
     assert len({station["suffix"] for station in GROUNDWATER_STATIONS}) == 229
+
+
+def test_all_river_stations_have_unique_identifiers() -> None:
+    assert len(RIVER_STATIONS) == 300
+    assert len({station["hzbnr"] for station in RIVER_STATIONS}) == 300
+    assert len({station["suffix"] for station in RIVER_STATIONS}) == 300
 
 
 def test_get_enabled_station_configs_defaults_to_empty() -> None:
@@ -64,12 +73,9 @@ def test_get_enabled_station_configs_uses_selected_sensors_only() -> None:
         options={},
     )
 
-    assert [
+    assert {
         station["suffix"] for station in get_enabled_station_configs(config_entry)
-    ] == [
-        "schwechat_hallenbad",
-        "fischering",
-    ]
+    } == {"schwechat_hallenbad", "fischering"}
 
 
 class DummyDataExtractor:
