@@ -109,7 +109,7 @@ The eHYD API provides complete station collections rather than one response per 
 
 For each update, the coordinator makes at most one request per required endpoint. If only river stations are configured, only the river endpoint is requested. If both river and groundwater stations are configured, one request is made to each endpoint.
 
-The default update interval is one hour. Individual sensors do not make their own API requests; they read their values from the shared response data.
+The update interval is one hour. Individual sensors do not make their own API requests; they read their values from the shared response data.
 
 ## Requirements
 
