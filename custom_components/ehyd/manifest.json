@@ -9,9 +9,6 @@
     "documentation": "https://github.com/ckadluba/ha-ehyd",
     "iot_class": "cloud_polling",
     "issue_tracker": "https://github.com/ckadluba/ha-ehyd/issues",
-    "requirements": [
-        "aiohttp",
-        "voluptuous"
-    ],
+    "requirements": [],
     "version": "1.0.1"
 }
