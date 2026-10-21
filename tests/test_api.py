@@ -38,12 +38,6 @@ class FakeSession:
     def __init__(self) -> None:
         self.urls: list[str] = []
 
-    async def __aenter__(self):
-        return self
-
-    async def __aexit__(self, *args):
-        return None
-
     def get(self, url: str, **kwargs) -> FakeResponse:
         self.urls.append(url)
         return FakeResponse(url)
@@ -67,7 +61,7 @@ async def test_api_fetches_only_requested_station_types(
 ) -> None:
     session = FakeSession()
     monkeypatch.setattr(
-        "custom_components.ehyd.api.aiohttp.ClientSession", lambda: session
+        "custom_components.ehyd.api.async_get_clientsession", lambda _hass: session
     )
 
     result = await EhydApi(SimpleNamespace()).async_update(
@@ -84,6 +78,33 @@ async def test_api_fetches_only_requested_station_types(
         )
         if enabled
     ]
+
+
+@pytest.mark.asyncio
+async def test_api_uses_shared_home_assistant_session(monkeypatch) -> None:
+    """The API client must reuse the shared Home Assistant aiohttp session."""
+    session = FakeSession()
+    hass = SimpleNamespace()
+    requested_with: list[object] = []
+
+    def fake_get_clientsession(requested_hass):
+        requested_with.append(requested_hass)
+        return session
+
+    def fail_client_session(*args, **kwargs):
+        raise AssertionError("A dedicated aiohttp.ClientSession must not be created")
+
+    monkeypatch.setattr(
+        "custom_components.ehyd.api.async_get_clientsession", fake_get_clientsession
+    )
+    monkeypatch.setattr(
+        "custom_components.ehyd.api.aiohttp.ClientSession", fail_client_session
+    )
+
+    await EhydApi(hass).async_update(fetch_river=True, fetch_groundwater=False)
+
+    assert requested_with == [hass]
+    assert session.urls == [RIVER_URL]
 
 
 @pytest.mark.asyncio
@@ -126,7 +147,8 @@ async def test_api_logs_specific_errors(
             return ErrorResponse(url)
 
     monkeypatch.setattr(
-        "custom_components.ehyd.api.aiohttp.ClientSession", ErrorSession
+        "custom_components.ehyd.api.async_get_clientsession",
+        lambda _hass: ErrorSession(),
     )
 
     with caplog.at_level(logging.ERROR, logger="custom_components.ehyd.api"):
