@@ -5,6 +5,7 @@ from typing import TYPE_CHECKING
 
 import aiohttp
 from aiohttp import ClientTimeout
+from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
@@ -45,43 +46,42 @@ class EhydApi:
             self._raw_response = {}
             return self._raw_response
 
-        async with aiohttp.ClientSession() as session:
-            responses = {}
-            for response_name, url in endpoints:
-                try:
-                    _LOGGER.debug("Fetching %s data from URL: %s", response_name, url)
-                    async with session.get(
-                        url, timeout=ClientTimeout(total=10)
-                    ) as response:
-                        response.raise_for_status()
-                        responses[response_name] = await response.json()
-                except TimeoutError as err:
-                    error_msg = (
-                        f"Timeout while fetching {response_name} data from eHYD API "
-                        f"({url})"
-                    )
-                    _LOGGER.exception(error_msg)
-                    raise RuntimeError(error_msg) from err
-                except aiohttp.ClientResponseError as err:
-                    error_msg = (
-                        f"HTTP error while fetching {response_name} data from "
-                        f"eHYD API ({url}): status {err.status}"
-                    )
-                    _LOGGER.exception(error_msg)
-                    raise RuntimeError(error_msg) from err
-                except aiohttp.ClientError as err:
-                    error_msg = (
-                        f"Error while fetching {response_name} data from eHYD API "
-                        f"({url}): {err}"
-                    )
-                    _LOGGER.exception(error_msg)
-                    raise RuntimeError(error_msg) from err
-                except (TypeError, ValueError) as err:
-                    error_msg = (
-                        f"Invalid response from {response_name} eHYD API ({url}): {err}"
-                    )
-                    _LOGGER.exception(error_msg)
-                    raise RuntimeError(error_msg) from err
+        session = async_get_clientsession(self.hass)
+        responses = {}
+        for response_name, url in endpoints:
+            try:
+                _LOGGER.debug("Fetching %s data from URL: %s", response_name, url)
+                async with session.get(
+                    url, timeout=ClientTimeout(total=10)
+                ) as response:
+                    response.raise_for_status()
+                    responses[response_name] = await response.json()
+            except TimeoutError as err:
+                error_msg = (
+                    f"Timeout while fetching {response_name} data from eHYD API ({url})"
+                )
+                _LOGGER.exception(error_msg)
+                raise RuntimeError(error_msg) from err
+            except aiohttp.ClientResponseError as err:
+                error_msg = (
+                    f"HTTP error while fetching {response_name} data from "
+                    f"eHYD API ({url}): status {err.status}"
+                )
+                _LOGGER.exception(error_msg)
+                raise RuntimeError(error_msg) from err
+            except aiohttp.ClientError as err:
+                error_msg = (
+                    f"Error while fetching {response_name} data from eHYD API "
+                    f"({url}): {err}"
+                )
+                _LOGGER.exception(error_msg)
+                raise RuntimeError(error_msg) from err
+            except (TypeError, ValueError) as err:
+                error_msg = (
+                    f"Invalid response from {response_name} eHYD API ({url}): {err}"
+                )
+                _LOGGER.exception(error_msg)
+                raise RuntimeError(error_msg) from err
 
-            self._raw_response = responses
-            return responses
+        self._raw_response = responses
+        return responses
