@@ -166,6 +166,18 @@ class StationSensor(CoordinatorEntity, SensorEntity):
         self._attr_name = f"{display_name} {metadata.nametag.title()}"
 
     @property
+    def available(self) -> bool:
+        """
+        Return whether the sensor data is available.
+
+        By default a coordinator-backed sensor becomes unavailable as soon as
+        the last update failed. Override this behavior to keep the sensor
+        available as long as data from a previous successful update is still
+        present, so the last known values remain readable.
+        """
+        return self.coordinator.data is not None
+
+    @property
     def native_value(self) -> float | None:
         """Return the current water level."""
         return self.data_extractor.get_native_value()
