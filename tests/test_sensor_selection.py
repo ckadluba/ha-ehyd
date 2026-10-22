@@ -101,6 +101,54 @@ def test_station_sensor_generates_expected_unique_id() -> None:
     assert sensor.device_info["identifiers"] == {(DOMAIN, "schwechat_hallenbad")}
 
 
+def test_station_sensor_stays_available_after_failed_update() -> None:
+    """A failed update must not disable sensors that still have older data."""
+    coordinator = SimpleNamespace(
+        data={"river": {"features": []}},
+        last_update_success=False,
+    )
+
+    sensor = StationSensor(
+        coordinator,
+        DummyDataExtractor(),
+        "schwechat_hallenbad",
+    )
+
+    assert sensor.available is True
+
+
+def test_station_sensor_is_unavailable_without_previous_data() -> None:
+    """Sensors are unavailable as long as no successful update happened."""
+    coordinator = SimpleNamespace(data=None, last_update_success=False)
+
+    sensor = StationSensor(
+        coordinator,
+        DummyDataExtractor(),
+        "schwechat_hallenbad",
+    )
+
+    assert sensor.available is False
+
+
+def test_station_sensor_keeps_last_value_after_failed_update() -> None:
+    """The last known value stays readable after a failed update."""
+    coordinator = SimpleNamespace(
+        data={
+            "river": {
+                "features": [
+                    {"properties": {"hzbnr": 208157, "wert": 4.5}},
+                ]
+            }
+        },
+        last_update_success=False,
+    )
+
+    sensor = RiverStationSensor(coordinator, "schwechat_hallenbad", 208157)
+
+    assert sensor.available is True
+    assert sensor.native_value == 4.5
+
+
 def test_async_setup_entry_creates_one_sensor_per_selected_station() -> None:
     coordinator = SimpleNamespace(data={})
     config_entry = SimpleNamespace(
