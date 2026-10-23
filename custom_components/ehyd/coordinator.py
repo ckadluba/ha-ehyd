@@ -60,8 +60,12 @@ class EhydDataUpdateCoordinator(DataUpdateCoordinator):
                 fetch_river=fetch_river,
                 fetch_groundwater=fetch_groundwater,
             )
+        except RuntimeError as err:
+            # The API client already logged the detailed error including its
+            # traceback. Keep the message, but do not log the same failure twice.
+            raise UpdateFailed(str(err)) from err
         except Exception as err:
-            msg = f"Error fetching eHYD data: {err}"
+            msg = f"Unexpected error fetching eHYD data: {err}"
             _LOGGER.exception(msg)
             raise UpdateFailed(msg) from err
 

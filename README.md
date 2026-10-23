@@ -110,6 +110,7 @@ The eHYD API provides complete station collections rather than one response per 
 For each update, the coordinator makes at most one request per required endpoint. If only river stations are configured, only the river endpoint is requested. If both river and groundwater stations are configured, one request is made to each endpoint.
 
 The update interval is one hour. Individual sensors do not make their own API requests; they read their values from the shared response data.
+If an update fails, the previously fetched data is kept and the sensors stay available with their last known values.
 
 ## Requirements
 
@@ -129,6 +130,8 @@ Check whether all stations of the selected type have already been configured in 
 
 Check the Home Assistant logs and verify that `ehyd.gv.at` is reachable. Individual stations may temporarily provide no current value. This can happen with upstream measurement sources and does not necessarily indicate an integration problem.
 
+A sensor only becomes `unavailable` before the first successful update. If a later update fails, the sensors keep their last known values and stay available, so the most recent readings remain readable.
+
 ### API requests fail
 
 The integration needs access to:
@@ -140,7 +143,10 @@ https://ehyd.gv.at/services/GrundwasserAktuell/json
 
 Check DNS, internet access, firewall rules, and whether the eHYD services are currently available.
 The integration logs the affected station type and endpoint for connection,
-timeout, HTTP-status, and invalid-response errors. Enable debug logging for
+timeout, HTTP-status, invalid-content-type, and invalid-response errors. Each
+log entry contains the details needed to narrow the cause down, such as the
+request timeout, the HTTP status code with its reason, or the error reported
+by the underlying network stack. Enable debug logging for
 `custom_components.ehyd` if you need the request details.
 
 ## Development
