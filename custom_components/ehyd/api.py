@@ -15,6 +15,8 @@ _LOGGER = logging.getLogger(__name__)
 RIVER_URL = "https://ehyd.gv.at/services/PegelAktuell/json"
 GROUNDWATER_URL = "https://ehyd.gv.at/services/GrundwasserAktuell/json"
 
+REQUEST_TIMEOUT = 10
+
 
 class EhydApi:
     """Class to handle API access for eHYD."""
@@ -52,20 +54,28 @@ class EhydApi:
             try:
                 _LOGGER.debug("Fetching %s data from URL: %s", response_name, url)
                 async with session.get(
-                    url, timeout=ClientTimeout(total=10)
+                    url, timeout=ClientTimeout(total=REQUEST_TIMEOUT)
                 ) as response:
                     response.raise_for_status()
                     responses[response_name] = await response.json()
             except TimeoutError as err:
                 error_msg = (
-                    f"Timeout while fetching {response_name} data from eHYD API ({url})"
+                    f"Timeout while fetching {response_name} data from eHYD API "
+                    f"({url}) (timeout: {REQUEST_TIMEOUT}s)"
+                )
+                _LOGGER.exception(error_msg)
+                raise RuntimeError(error_msg) from err
+            except aiohttp.ContentTypeError as err:
+                error_msg = (
+                    f"Invalid response content type for {response_name} data from "
+                    f"eHYD API ({url}): {err.message}"
                 )
                 _LOGGER.exception(error_msg)
                 raise RuntimeError(error_msg) from err
             except aiohttp.ClientResponseError as err:
                 error_msg = (
                     f"HTTP error while fetching {response_name} data from "
-                    f"eHYD API ({url}): status {err.status}"
+                    f"eHYD API ({url}): status {err.status} ({err.message})"
                 )
                 _LOGGER.exception(error_msg)
                 raise RuntimeError(error_msg) from err
@@ -78,7 +88,8 @@ class EhydApi:
                 raise RuntimeError(error_msg) from err
             except (TypeError, ValueError) as err:
                 error_msg = (
-                    f"Invalid response from {response_name} eHYD API ({url}): {err}"
+                    f"Invalid response for {response_name} data from eHYD API "
+                    f"({url}): {err}"
                 )
                 _LOGGER.exception(error_msg)
                 raise RuntimeError(error_msg) from err

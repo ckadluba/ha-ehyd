@@ -109,19 +109,39 @@ async def test_api_uses_shared_home_assistant_session(monkeypatch) -> None:
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize(
-    ("error", "expected_message"),
+    ("error", "expected_message", "expected_detail"),
     [
         (
             asyncio.TimeoutError(),
             "Timeout while fetching river data from eHYD API",
+            "(timeout: 10s)",
         ),
         (
-            aiohttp.ClientResponseError(None, (), status=503),
+            aiohttp.ClientResponseError(
+                None, (), status=503, message="Service Unavailable"
+            ),
             "HTTP error while fetching river data from eHYD API",
+            "status 503 (Service Unavailable)",
+        ),
+        (
+            aiohttp.ContentTypeError(
+                None,
+                (),
+                status=200,
+                message="Attempt to decode JSON with unexpected mimetype: text/html",
+            ),
+            "Invalid response content type for river data from eHYD API",
+            "unexpected mimetype",
+        ),
+        (
+            aiohttp.ClientError("Cannot connect to host"),
+            "Error while fetching river data from eHYD API",
+            "Cannot connect to host",
         ),
         (
             ValueError("invalid JSON"),
-            "Invalid response from river eHYD API",
+            "Invalid response for river data from eHYD API",
+            "invalid JSON",
         ),
     ],
 )
@@ -130,10 +150,13 @@ async def test_api_logs_specific_errors(
     caplog,
     error: Exception,
     expected_message: str,
+    expected_detail: str,
 ) -> None:
     class ErrorResponse(FakeResponse):
         def raise_for_status(self) -> None:
-            if isinstance(error, aiohttp.ClientResponseError):
+            if isinstance(error, aiohttp.ClientResponseError) and not isinstance(
+                error, aiohttp.ContentTypeError
+            ):
                 raise error
 
         async def json(self) -> dict:
@@ -159,6 +182,70 @@ async def test_api_logs_specific_errors(
             )
 
     assert expected_message in caplog.text
+    assert expected_detail in caplog.text
+
+
+@pytest.mark.asyncio
+async def test_api_logs_content_type_error_not_as_http_error(
+    monkeypatch,
+    caplog,
+) -> None:
+    """A wrong content type must not be reported as a plain HTTP error."""
+
+    class ContentTypeResponse(FakeResponse):
+        async def json(self) -> dict:
+            raise aiohttp.ContentTypeError(
+                None,
+                (),
+                status=200,
+                message="Attempt to decode JSON with unexpected mimetype: text/html",
+            )
+
+    class ContentTypeSession(FakeSession):
+        def get(self, url: str, **kwargs) -> ContentTypeResponse:
+            self.urls.append(url)
+            return ContentTypeResponse(url)
+
+    monkeypatch.setattr(
+        "custom_components.ehyd.api.async_get_clientsession",
+        lambda _hass: ContentTypeSession(),
+    )
+
+    with caplog.at_level(logging.ERROR, logger="custom_components.ehyd.api"):
+        with pytest.raises(RuntimeError, match="Invalid response content type"):
+            await EhydApi(SimpleNamespace()).async_update(
+                fetch_river=True,
+                fetch_groundwater=False,
+            )
+
+    assert "HTTP error" not in caplog.text
+
+
+@pytest.mark.asyncio
+async def test_api_keeps_original_error_as_cause(monkeypatch) -> None:
+    """The original error stays accessible through the exception chain."""
+
+    class ErrorResponse(FakeResponse):
+        async def json(self) -> dict:
+            raise aiohttp.ClientError("Cannot connect to host")
+
+    class ErrorSession(FakeSession):
+        def get(self, url: str, **kwargs) -> ErrorResponse:
+            self.urls.append(url)
+            return ErrorResponse(url)
+
+    monkeypatch.setattr(
+        "custom_components.ehyd.api.async_get_clientsession",
+        lambda _hass: ErrorSession(),
+    )
+
+    with pytest.raises(RuntimeError) as exc_info:
+        await EhydApi(SimpleNamespace()).async_update(
+            fetch_river=True,
+            fetch_groundwater=False,
+        )
+
+    assert isinstance(exc_info.value.__cause__, aiohttp.ClientError)
 
 
 @pytest.mark.asyncio
